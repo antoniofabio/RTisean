@@ -3,9 +3,10 @@
 \alias{nrlazy}
 \title{Nonlinear noise reduction}
 \description{Tools for performing nonlinear noise reduction.}
-\usage{nrlazy(series, l = -1, x = 0, c = 1, m = 5, d = 1, i = 1, r = -1, v = -1)
+\usage{
+nrlazy(series, l = -1, x = 0, c = 1, m = 5, d = 1, i = 1, r = -1, v = -1)
 lazy(series, m = -1, r = -1, v = -1, i = 1, l = -1, x = 0, c = 1)
- }
+}
 \arguments{
   \item{series}{a vector or a matrix.}
   \item{m}{embedding dimension. }
@@ -30,29 +31,23 @@ In \code{lazy} only the central component of each vector is corrected. }
 \seealso{\code{\link{ghkss}},\code{\link{project}}}
 
 \examples{
-
-\dontrun{
-x11(12,6)
 par(mfrow=c(1,2))
 
-n=5000
+n <- 5000
 dat <- henon(n)
 dat[,1] <- dat[,1] + rnorm(n)/25
 delayeddat <- delay(dat)
 filtereddat <- lazy(dat,m=5,v=0.05,c=2)
 delayedfiltdat <- delay(filtereddat)
-plot(delayeddat, cex= 0.2, cex.main=0.7, xlab="", ylab="", main = "Embedded noisy H�on attractor filtered with lazy")
+plot(delayeddat, cex= 0.2, cex.main=0.7, xlab="", ylab="", main = "Embedded noisy Henon attractor filtered with lazy")
 points(delayedfiltdat, cex=0.2, col=2)
-legend(-0.25,-0.5, "Noisy data",fill=1, bty="n",cex=0.7)
-legend(-0.25,-0.75, "Filtered data",fill=2,bty="n",cex=0.7)
-
+legend(-0.25,-0.5, c("Noisy data","Filtered data"),fill=c(1,2), bty="n",cex=0.7)
 
 filteredat2 <- nrlazy(dat,m=5,v=0.2)
 delayedfiltdat2 <- delay(filteredat2)
-plot(delayeddat, cex= 0.2, cex.main=0.7,xlab="", ylab="", main =  "Embedded noisy H�on attractor filtered with nrlazy")
+plot(delayeddat, cex= 0.2, cex.main=0.7,xlab="", ylab="", main =  "Embedded noisy Henon attractor filtered with nrlazy")
 points(delayedfiltdat2 , cex=0.2, col=2)
-legend(-0.25,-0.5, "Noisy data",fill=1,bty="n",cex=0.7)
-legend(-0.25,-0.75, "Filtered data",fill=2,bty="n",cex=0.7)
+legend(-0.25,-0.5, c("Noisy data","Filtered data"),fill=c(1,2),bty="n",cex=0.7)
 }
 }
 \keyword{ ts } 
