@@ -1,0 +1,245 @@
+/*Author: Rainer Hegger, last modified: Sep 4, 1999 */
+
+/* modified by Alexei Grigoriev, 27.4.2006 */
+#include <stdio.h>
+#include <stdlib.h>
+#include <malloc.h>
+#include <math.h>
+#include <limits.h>
+#include <string.h>
+#include "tsa.h"
+
+#include <setjmp.h>
+extern jmp_buf my_exit_point;
+
+#include "lyap_r.h"
+
+
+#define WID_STR "Estimates the maximal Lyapunov exponent; Rosenstein et al."
+
+#define NMAX 256
+
+
+void ns_lyap_r::show_options(char *progname)
+{
+  longjmp(my_exit_point,4);
+  what_i_do(progname,WID_STR);
+  fprintf(stderr," Usage: %s [options]\n",progname);
+  fprintf(stderr," Options:\n");
+  fprintf(stderr,"Everything not being a valid option will be interpreted"
+          " as a possible"
+          " datafile.\nIf no datafile is given stdin is read. Just - also"
+          " means stdin\n");
+  fprintf(stderr,"\t-l # of datapoints [default is whole file]\n");
+  fprintf(stderr,"\t-x # of lines to be ignored [default is 0]\n");
+  fprintf(stderr,"\t-c column to read[default 1]\n");
+  fprintf(stderr,"\t-m embedding dimension [default 2]\n");
+  fprintf(stderr,"\t-d delay  [default 1]\n");
+  fprintf(stderr,"\t-t time window to omit [default 0]\n");
+  fprintf(stderr,"\t-r epsilon size to start with [default "
+	  "(data interval)/1000]\n");
+  fprintf(stderr,"\t-s # of iterations [default 10]\n");
+  fprintf(stderr,"\t-o name of output file [default 'datafile'.ros]\n");
+  fprintf(stderr,"\t-V verbosity level [default 3]\n\t\t"
+          "0='only panic messages'\n\t\t"
+          "1='+ input/output messages'\n\t\t"
+          "2='+ give more detailed information about the length scales\n");
+  fprintf(stderr,"\t-h show these options\n");
+  fprintf(stderr,"\n");
+  exit(0);
+}
+
+void ns_lyap_r::scan_options(int n,char **argv)
+{
+  char *out;
+
+  if ((out=check_option(argv,n,'l','u')) != NULL)
+    sscanf(out,"%lu",&length);
+  if ((out=check_option(argv,n,'x','u')) != NULL)
+    sscanf(out,"%lu",&exclude);
+  if ((out=check_option(argv,n,'c','u')) != NULL)
+    sscanf(out,"%u",&column);
+  if ((out=check_option(argv,n,'m','u')) != NULL)
+    sscanf(out,"%u",&dim);
+  if ((out=check_option(argv,n,'d','u')) != NULL)
+    sscanf(out,"%u",&delay);
+  if ((out=check_option(argv,n,'t','u')) != NULL)
+    sscanf(out,"%u",&mindist);
+  if ((out=check_option(argv,n,'r','f')) != NULL) {
+    epsset=1;
+    sscanf(out,"%lf",&eps0);
+  }
+  if ((out=check_option(argv,n,'s','u')) != NULL)
+    sscanf(out,"%u",&steps);
+  if ((out=check_option(argv,n,'V','u')) != NULL)
+    sscanf(out,"%u",&verbosity);
+  if ((out=check_option(argv,n,'o','o')) != NULL)
+    if (strlen(out) > 0)
+      outfile=out;
+}
+      
+void ns_lyap_r::put_in_boxes(void)
+{
+  int i,j,x,y,del;
+  
+  for (i=0;i<NMAX;i++)
+    for (j=0;j<NMAX;j++)
+      box[i][j]= -1;
+
+  del=delay*(dim-1);
+  long temp;
+  temp=length-del-steps;
+  for (i=0;i<temp;i++) {
+    x=(int)(series[i]*epsinv)&nmax;
+    y=(int)(series[i+del]*epsinv)&nmax;
+    list[i]=box[x][y];
+    box[x][y]=i;
+  }
+}
+
+char ns_lyap_r::make_iterate(long act)
+{
+  char ok=0;
+  int x,y,i,j,i1,k,del1=dim*delay;
+  long element,minelement= -1;
+  double dx,mindx=1.0;
+
+  x=(int)(series[act]*epsinv)&nmax;
+  y=(int)(series[act+delay*(dim-1)]*epsinv)&nmax;
+  for (i=x-1;i<=x+1;i++) {
+    i1=i&nmax;
+    for (j=y-1;j<=y+1;j++) {
+      element=box[i1][j&nmax];
+      while (element != -1) {
+	if (labs(act-element) > mindist) {
+	  dx=0.0;
+	  for (k=0;k<del1;k+=delay) {
+	    dx += (series[act+k]-series[element+k])*
+	      (series[act+k]-series[element+k]);
+	    if (dx > eps)
+	      break;
+	  }
+	  if (k==del1) {
+	    if (dx < mindx) {
+	      ok=1;
+	      if (dx > 0.0) {
+		mindx=dx;
+		minelement=element;
+	      }
+	    }
+	  }
+	}
+	element=list[element];
+      }
+    }
+  }
+  if ((minelement != -1) ) {
+    act--;
+    minelement--;
+    for (i=0;i<=steps;i++) {
+      act++;
+      minelement++;
+      dx=0.0;
+      for (j=0;j<del1;j+=delay) {
+	dx += (series[act+j]-series[minelement+j])*
+	  (series[act+j]-series[minelement+j]);
+      }
+      if (dx > 0.0) {
+	found[i]++;
+	lyap[i] += log(dx);
+      }
+    }
+  }
+  return ok;
+}
+
+int ns_lyap_r::main(int argc,char **argv)
+{
+
+outfile=NULL;
+infile=NULL;
+epsset=0;
+dim=2;delay=1;steps=10;mindist=0;
+column=1;
+verbosity=0xff;
+nmax=NMAX-1;
+length=ULONG_MAX;exclude=0;
+eps0=1.e-3;
+
+
+  char stdi=0,*done,alldone;
+  int i;
+  long n;
+  long maxlength;
+  double min,max;
+  FILE *file;
+  
+  if (scan_help(argc,argv))
+    show_options(argv[0]);
+
+  scan_options(argc,argv);
+#ifndef OMIT_WHAT_I_DO
+  if (verbosity&VER_INPUT)
+    what_i_do(argv[0],WID_STR);
+#endif
+
+  infile=search_datafile(argc,argv,&column,verbosity);
+  if (infile == NULL)
+    stdi=1;
+
+  if (outfile == NULL) {
+    if (!stdi) {
+      check_alloc(outfile=(char*)calloc(strlen(infile)+5,(size_t)1));
+      strcpy(outfile,infile);
+      strcat(outfile,".ros");
+    }
+    else {
+      check_alloc(outfile=(char*)calloc((size_t)10,(size_t)1));
+      strcpy(outfile,"stdin.ros");
+    }
+  }
+  test_outfile(outfile);
+
+  series=(double*)get_series(infile,&length,exclude,column,verbosity);
+  rescale_data(series,length,&min,&max);
+
+  if (epsset)
+    eps0 /= max;
+
+  check_alloc(list=(long*)malloc(length*sizeof(long)));
+  check_alloc(lyap=(double*)malloc((steps+1)*sizeof(double)));
+  check_alloc(found=(long*)malloc((steps+1)*sizeof(long)));
+  check_alloc(done=(char*)malloc(length));
+
+  for (i=0;i<=steps;i++) {
+    lyap[i]=0.0;
+    found[i]=0;
+  }
+  for (i=0;i<length;i++)
+    done[i]=0;
+  
+  maxlength=length-delay*(dim-1)-steps-1-mindist;
+  alldone=0;
+  file=fopen(outfile,"w");
+  if (verbosity&VER_INPUT)
+    fprintf(stderr,"Opened %s for writing\n",outfile);
+  for (eps=eps0;!alldone;eps*=1.1) {
+    epsinv=1.0/eps;
+    put_in_boxes();
+    alldone=1;
+    for (n=0;n<=maxlength;n++) {
+      if (!done[n])
+	    done[n]=make_iterate(n);
+      alldone &= done[n];
+    }
+    if (verbosity&VER_USR1)
+      fprintf(stderr,"epsilon: %e already found: %ld\n",eps*max,found[0]);
+  } 
+  for (i=0;i<=steps;i++)
+    if (found[i])
+      fprintf(file,"%d %e\n",i,lyap[i]/found[i]/2.0);
+  fclose(file);
+
+  return 0;
+}
+

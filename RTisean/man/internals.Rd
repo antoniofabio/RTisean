@@ -1,0 +1,45 @@
+\name{internals}
+\alias{internals}
+\alias{add_option}
+\alias{call_TISEANC_extended}
+\alias{call_TISEANC_extended2}
+\alias{call_TISEANC_extended3}
+\alias{call_TISEANC_extended3_polyback}
+\alias{call_TISEANF_extended}
+\alias{call_TISEANF_extended2}
+\alias{call_TISEANF_extended3}
+\alias{chartonum}
+\alias{checkcolumns}
+\alias{checkcolumnsinput}
+\alias{checkint}
+\alias{checkmulti}
+\alias{checknonneg}
+\alias{checkposint}
+\alias{checkpositive}
+\alias{cleanfinalout}
+\alias{colnamesout}
+\alias{d2}
+\alias{d2s}
+\alias{dimcleanout}
+\alias{errormessage}
+\alias{find_suffixes}
+\alias{i2s}
+\alias{input_filename}
+\alias{is_matrix} 
+\alias{is_nice_list}
+\alias{is_vector}
+\alias{output_filename}
+\alias{param_filename}
+\alias{polyback_aux}
+\alias{prettyout}
+\alias{read_TISEAN}
+\alias{read_TISEAN_new}
+\alias{recurr}
+\alias{tneq}
+\alias{write_to_file}
+\alias{write_to_inputfile}
+\alias{dayssn}
+\title{Internal objects}
+\description{Internal objects}
+\details{}
+\keyword{ ts}
