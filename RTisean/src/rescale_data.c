@@ -2,6 +2,7 @@
 
 /* modified by Alexei Grigoriev, 27.4.2006 */
 #include <stdio.h>
+#include <stdlib.h>
 #include "tisean_cec.h"
 
 #include <setjmp.h>

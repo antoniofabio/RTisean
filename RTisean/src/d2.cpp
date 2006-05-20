@@ -207,7 +207,7 @@ void ns_d2::make_c2_dim(int n)
 		    maxi=howoften1;
 		  }
 		  else {
-		    maxi=(lneps-log(max))/lnfac;
+		    maxi= (long) ( ((double) lneps- (double)log(max))/ (double) lnfac );
 		  }
 		}
 		if (count > 0)
@@ -252,7 +252,7 @@ void ns_d2::make_c2_1(int n)
 	  if (max < EPSMIN)
 	    maxi=howoften1;
 	  else
-	    maxi=(lneps-log(max))/lnfac;
+	    maxi=(long) (lneps-log(max))/lnfac;
 	  for (i=imin;i<=maxi;i++)
 	    found[0][i] += 1.0;
 	}

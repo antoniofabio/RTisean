@@ -18,7 +18,6 @@
 \alias{checkpositive}
 \alias{cleanfinalout}
 \alias{colnamesout}
-\alias{d2}
 \alias{d2s}
 \alias{dimcleanout}
 \alias{errormessage}

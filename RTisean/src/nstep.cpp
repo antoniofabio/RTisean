@@ -13,7 +13,7 @@ extern jmp_buf my_exit_point;
 
 #include "nstep.h"
 
-#include "mylog.h";
+#include "mylog.h"
 
 
 #define WID_STR "Makes a local linear fit for multivariate data\n\

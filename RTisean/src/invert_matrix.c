@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include "tsa.h"
 
 double **invert_matrix(double **mat,unsigned int size)
 {

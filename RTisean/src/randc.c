@@ -1,17 +1,11 @@
 /*Author: Rainer Hegger. Last modified: January 24th, 1998 */
 #define __RANDOM
 
-#ifndef	_STDLIB_H
+#include <stdio.h>
 #include <stdlib.h>
-#endif
-
-#ifndef _LIMITS_H
 #include <limits.h>
-#endif
-
-#ifndef _MATH_H
 #include <math.h>
-#endif
+#include "tsa.h"
 
 #ifndef M_PI
 #define M_PI 3.1415926535897932385E0
