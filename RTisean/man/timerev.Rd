@@ -12,21 +12,13 @@ timerev(series, d = 1, l = -1, x = 0, c = 1)
   \item{x}{number of values to be skipped. }
   \item{c}{column to be read. }
 }
-\details{
-}
 \value{
 A scalar corresponding to the time reversal statistics.
 }
-\references{ }
-\author{ }
-\note{ 
-}
 \seealso{ \code{\link{help}}, }
 \examples{
-
 dat <- lynx
 trstat <- timerev(dat)
- 
 }
 \keyword{math}
 \keyword{ts}

@@ -6,7 +6,6 @@
 \usage{
 zeroth(series, l = -1, x = 0, m = -1, c = -1, d = 1, n = -1, S = 1, k = 30, r = -1, f = 1.2, s = 1, C = -1)
 }
-
 \arguments{
   \item{series}{a matrix or a vector.}
   \item{l}{number of points to use. }
@@ -31,16 +30,10 @@ numbers as input, where the first one is the number of components and the second
 }
 \value{A matrix of \code{s} lines, containing the steps forecasted in the first column
 and the normalized forecast errors in the following columns for each component of the vector.}
-\references{ }
-\author{ }
-\note{ }
 \seealso{ \code{\link{predict}}, \code{\link{xzero}}. }
 \examples{
-
 dat <- henon(1000)
 zerotherr <- zeroth(dat, s = 20)
 plot(zerotherr, t="l", xlab= "Steps", ylab= "Normalized error", main = "Zeroth order ansatz prediction errors")
-
 }
 \keyword{ ts }
-

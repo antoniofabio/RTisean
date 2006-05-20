@@ -14,18 +14,11 @@ pc(series, m = -1, d = 1, q = 2, l = -1, x = 0, c = 1)
   \item{x}{number of values to be skipped. }
   \item{c}{column to be read.}
 }
-\details{
-}
 \value{A matrix containing the projections onto the largest principal components as columns.}
-\references{ }
-\author{ }
-\note{ }
 \seealso{ \code{\link{svd}} }
 \examples{
-
 dat <- henon(100)
 prcomp <- pc(dat, m=1)
 plot(prcomp,t="l",main="Projection on the first component",xlab="Time",ylab="Projected time series")
-
 }
 \keyword{manip}

@@ -17,36 +17,24 @@ forecast error is increased minimally. }
   \item{scale}{final number of terms.}
   \item{p}{name of the input matrix created with \code{polypar} or by hand.}
 }
-\details{
-}
 \value{
-
 A dataframe containing the  number of remaining terms in the polynomial
 in column 1, the in-sample error produced by the reduced polynomial in 
 column 2, the out-of-sample error produced by the reduced polynomial in
 column 3 and the term removed last from the polynomial in column 4.
-
 }
-
-\references{ }
-\author{ }
-\note{ }
 \seealso{ \code{\link{polypar}}}
 \examples{ 
-
 \dontrun{
-polymat=polypar(p=4)
-polyout=polyback(sunspot.month,p=polymat,n=2000)
+polymat <- polypar(p=4)
+polyout <- polyback(sunspot.month,p=polymat,n=2000)
 plot(0:14,polyout[,2],t="l",ylim=range(polyout[,(2:3)]),
 xlab="Number of removed parameters",ylab="Forecast error",
 main="Fitting accuracy of polynomial
 model reduced via backward elimination")
 points(0:14,polyout[,3],t="l",col=2)
-
-legend(2,0.5, "In-sample error",fill=1,bty="n",cex=0.8)
-legend(2,0.49, "Out-of-sample error",fill=2,bty="n",cex=0.8)
+legend(2,0.5, c("In-sample error","Out-of-sample error"),fill=c(1,2),bty="n",cex=0.8)
 }
-
 }
 \keyword{ models} 
 \keyword{ ts } 

@@ -15,28 +15,19 @@ of the polynomial from a parameter matrix. }
   \item{L}{length of the trajectory to forecast. }
   \item{p}{name of the input parameter matrix created with \code{polypar} or by hand.}
 }
-\details{  }
 \value{
-
 A list with components:
 
   \item{coeff }{the coefficients of the model.}
   \item{pred }{the forecasted points.}
-
 }
-\references{ }
-\author{}
-\note{ }
 \examples{
-
-dat=sin(1:10000)+rnorm(10000)/5
-polynompout=polynomp(dat[1:9900], p = polypar(), L=100)
-pred=polynompout$pred
+dat<-sin(1:10000)+rnorm(10000)/5
+polynompout<-polynomp(dat[1:9900], p = polypar(), L=100)
+pred<-polynompout$pred
 plot(dat[9901:10000],t="l",xlab="Time",ylab="Sin data",ylim=c(-1.9,max(dat)))
 points(pred,t="l",col=2)
-legend(70,-1.5, "Noisy Data",fill=1, bty="n")
-legend(70,-1.7,"Filtered Data",fill=2,bty="n")
-
+legend(70,-1.5, c("Noisy Data", "Filtered Data") ,fill=c(1,2), bty="n")
 }
 \keyword{ models} 
 \keyword{ ts }

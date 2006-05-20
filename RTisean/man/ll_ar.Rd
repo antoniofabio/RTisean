@@ -20,7 +20,6 @@ ll_ar(series, l = -1, x = 0, c = 1, m = 2, d = 1, i = -1, r = -1, R = -1, f = 1.
   \item{s}{steps to be forecasted.}
   \item{C}{width of causality window.}
 }
-\details{}
 \value{
 A matrix containing: the neighborhood size in column 1; the relative forecast error in columnn 2;
 the fraction of points for which neighbors were found for the corresponding neighborhood size in column 3;
@@ -29,13 +28,8 @@ of points for which neighbors were found in column 5.
 }
 \references{M. Casdagli, Chaos and deterministic versus stochastic nonlinear modeling, J. Roy. 
 Stat. Soc. 54, 303 (1991).}
-\author{  }
-\note{ }
 \seealso{ \code{\link{onestep}}}
 \examples{
-
-	
-
 dat <- logistic(iter=1000,r=3.6) +runif(1000)/10
 ll_aroutput <- ll_ar(dat)
 par(mfrow=c(2,2))
@@ -44,9 +38,6 @@ plot(ll_aroutput[,1],ll_aroutput[,2],xlab="Neighborhood size",ylab="Relative for
 plot(ll_aroutput[,1],ll_aroutput[,3],xlab="Neighborhood size", ylab="Fraction of points with neighbors",t="l" )
 plot(ll_aroutput[,1],ll_aroutput[,4],xlab="Neighborhood size",ylab="Average number of neighbors",t="l")
 plot(ll_aroutput[,1],ll_aroutput[,5],xlab="Neighborhood size",ylab="Variance of points with neighbors",t="l")
-
-
-
 }
 \keyword{ models}
 \keyword{ ts}

@@ -15,13 +15,7 @@ predict(series, d = -1, m = -1, r = -1, v = -1, s = 1, l = -1, x = 0, c = 1)}
   \item{x}{number of values to be skipped. }
   \item{c}{column to be read.}
 }
-\details{
-}
 \value{A vector containing the series of forecasted values.}
-\references{ }
-\author{  }
-\note{ 
-}
 \seealso{  \code{\link{xzero}}, \code{\link{zeroth}}.}
 \examples{
 \dontrun{
@@ -31,5 +25,4 @@ plot(dat)
 lines(1821:1934, pred, col=2)
 }
 }
-\keyword{ ts } 
-
+\keyword{ ts }

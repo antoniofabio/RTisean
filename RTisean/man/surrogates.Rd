@@ -7,7 +7,6 @@
 \usage{
 surrogates(series, n = 1, i = -1, S = FALSE, I = -1, l = -1, x = 0, m = -1, c = -1)
 }
-
 \arguments{
   \item{series}{a vector or a matrix.}
   \item{n}{number of surrogates.}
@@ -29,23 +28,15 @@ the exact spectrum (resp. relative phases) is given. Asymptotically, the differe
 between both should converge to zero. 
 It is advisable to select a suitable sub-sequence to minimize end effects by 
 using \code{\link{endtoend}} before preparing surrogates}
-
 \value{A vector or a matrix containing the surrogate data as columns.}
-
 \references{
 T. Schreiber and A. Schmitz, Improved surrogate data for nonlinearity 
 tests, Phys. Rev. Lett. 77, 635 (1996). 
 }
-\author{  }
-\note{ 
-}
 \seealso{ \code{\link{endtoend}}}
 \examples{
-
-dat=logistic(1000)
-surr=surrogates(dat)
-
-
+dat<-logistic(1000)
+surr<-surrogates(dat)
 }
 \keyword{ math} 
 \keyword{ ts } 

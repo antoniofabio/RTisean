@@ -1,8 +1,8 @@
 \name{poincare}
 \alias{poincare}
-\title{Poincar�section}
+\title{Poincare section}
 \description{
-Makes a Poincar�section for time continuous scalar data sets along one
+Makes a Poincare section for time continuous scalar data sets along one
 of the coordinates of the embedding vector.}
 \usage{
 poincare(series, l = -1, x = 0, c = 1, m = 2, d = 1, q = -1, C = 0, a = -1)
@@ -26,21 +26,13 @@ the time between the last two crossings.}
 
 \references{R. Hegger and H. Kantz, Embedding of sequences of time intervals, Europhys.
 Lett. 38, 267 (1997). }
-\author{}
-\note{ }
-\seealso{ }
 \examples{
-
 library(tseriesChaos)
 dat <- rossler.ts
 poincsect <- poincare(dat,a=1)
 plot(poincsect,main="Poincar�section of Rossler data", xlab="Data cohordinates at the crossing", 
 ylab="Time between the last two crossings")
-
-  }
 }
 \keyword{ math}
 \keyword{ ts}
 \keyword{ manip} 
-
-

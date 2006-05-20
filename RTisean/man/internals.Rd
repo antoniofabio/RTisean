@@ -40,5 +40,4 @@
 \alias{dayssn}
 \title{Internal objects}
 \description{Internal objects}
-\details{}
-\keyword{ ts}
+\keyword{internal}

@@ -27,20 +27,13 @@ in the first column, the \code{Q}th order entropy (H\_Q(dimension,epsilon))
 in the second column and the \code{Q}th order differential entropy
 ( H\_Q(dimension,epsilon)-H\_Q(dimension-1,epsilon)) in the third column.
 }
-\references{ }
-\author{ }
-\note{ }
 \seealso{ \code{\link{d2}}, \code{\link{c1}} }
 \examples{
-
 dat <- henon(10000)
 boxout<- boxcount(dat,d=2)
 plot(boxout$comp1$embdim1[,1],boxout$comp1$embdim1[,2],ylim=c(0,8), t="l",
-xlab="Epsilon",ylab="Entropy",main="Renyi Entropy of H�on Data")
+xlab="Epsilon",ylab="Entropy",main="Renyi Entropy of Henon Data")
 lines(boxout$comp1$embdim2[,1],boxout$comp1$embdim2[,2],t="l",col=2)
-legend(1.5,7, "Embedding dimension 1",fill=1, bty="n")
-legend(1.5,6.7,"Embedding dimension 2",fill=2,bty="n")
-
-  }
+legend(1.5,7, c("Embedding dimension 1", "Embedding dimension 2"),fill=c(1,2), bty="n")
 }
 \keyword{ts} 

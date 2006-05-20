@@ -10,16 +10,9 @@
 \item{c}{column to be read. }  
 \item{i}{number of iterations. }
 }
-\details{}
 \value{A vector consisting of the filtered time series.}
-
-\references{ }
-\author{ }
-\note{ }
-\seealso{ }
 \examples{
-
-\dontrun{  
+\dontrun{
 numdata <- 500
 dat <- cos(1:numdata/25)+rnorm(numdata,0,0.1)
 plot(dat,xlab="Time",t="l",ylab="Cos Data",ylim=c(-1.7,1.2))
@@ -28,8 +21,5 @@ points(filteredat,col=2,t="l",lwd=2)
 legend(300,-1.3, "Noisy Data",fill=1, bty="n")
 legend(300,-1.45,"Filtered Data",fill=2,bty="n")
 }
-
-}
 }
 \keyword{ts}
-

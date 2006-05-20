@@ -4,7 +4,6 @@
 \description{ 
 Performs a noise reduction, through an orthogonal projection onto manifold using an 
 euclidean or a special metric. }
-
 \usage{
 ghkss(series, l = -1, x = 0, c = 1, m = 5, d = 1, q = 3, k = 30, r = -1, i = 1, two = FALSE)
 }
@@ -21,23 +20,16 @@ ghkss(series, l = -1, x = 0, c = 1, m = 5, d = 1, q = 3, k = 30, r = -1, i = 1, 
   \item{i}{number of iterations.}
   \item{two}{use euclidean metric instead of the special one.}
 }
-\details{
-}
 \value{A vector containing the filtered time series. }
 \references{ P. Grassberger, R. Hegger, H. Kantz, C. Schaffrath, and T. Schreiber, On noise
  reduction methods for chaotic data, CHAOS 3, 127 (1993).}
-
-\author{ }
-\note{ }
 \seealso{  \code{\link{project}} }
 \examples{
-
 dat <- lynx + 500*rnorm(114)
 dat[dat<0] <- 0
 plot(dat,ylab="Lynx data")
 filteredat <- ghkss(dat)
 filteredat <- ts(filteredat, start=1821, end=1934)
 points(filteredat ,col=2,t="l")
-
 }
 \keyword{ts} 

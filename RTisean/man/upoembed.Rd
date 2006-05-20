@@ -16,18 +16,12 @@ upoembed(series, d = -1, m = 2, p = 1, l = -1, x = 0, c = 1)
   \item{x}{number of values to be skipped. }
   \item{c}{column to be read. }
 }
-\details{}
 \value{A matrix containing the embedded periodic orbits as columns.}
-\references{ }
-\author{ }
-\note{ }
 \seealso{ \code{\link{upo}} }
 \examples{
-
 \dontrun{
-upoout= upo(dat,m=2, v=0.1, n=70, p=6)
-upoemb=upoembed(upoout,d=1)
+upoout <- upo(dat,m=2, v=0.1, n=70, p=6)
+upoemb <- upoembed(upoout,d=1)
 }
-  }
 }
 \keyword{ts}

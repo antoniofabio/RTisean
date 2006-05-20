@@ -23,20 +23,13 @@ c1(series, d = -1, m = -1, M = -1, t = -1, n = -1, scale = 2, K = 100, l = -1, x
 \details{ The parameter \code{pretty} must be set to \code{FALSE}
 if the output of \code{d2} is meant to be post-processed by
  \code{c2d} or \code{c2t}.
-
 }
 \value{A list of as many matrices as the embedding dimensions, containing 
 the necessary radius in the first column and the mass in the second column.
 }
-\references{ }
-\author{ }
-\note{ }
 \seealso{ \code{\link{d2}} }
 \examples{
-
 dat <- henon(10000)
 infodim <- c1(dat,d=1,m=2,M=6,t=50,n=500)
-
-
 }
 \keyword{ts}

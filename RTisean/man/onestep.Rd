@@ -19,24 +19,15 @@ onestep(series, l = -1, x = 0, c = -1, m = 2, d = 1, n = -1, k = 30, r = -1, f =
   \item{s}{steps to be forecasted. }
   \item{C}{width of causality window.}
 }
-\details{
-}
 \value{A scalar corresponding to the relative forecast error, namely the forecast error 
 devided by the standard deviation of the data.}
-\references{ }
-\author{ }
-\note{ }
-\seealso{}
 \examples{
-
-
 dat<-logistic(r=3.57)
 errors=NULL
   for(i in 1:100)
   errors[i]=onestep(dat,s=i)
 
 plot(errors,t="l",xlab="Forecasted steps", ylab="Relative error",main="Relative forecast error for a local linear fit")  
-
 }
 \keyword{ models}
 \keyword{ ts}% 

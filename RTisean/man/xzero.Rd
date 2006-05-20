@@ -6,7 +6,7 @@ Takes two data sets and fits a zeroth order model of one data set
 to predict another data set. It then computes the error of the model.
 }
 \usage{
-	xzero(series, l = -1, x = 0, c = -1, m = 3, d = 1, n = -1, k = 30, r = -1, f = 1.2, s = 1)
+xzero(series, l = -1, x = 0, c = -1, m = 3, d = 1, n = -1, k = 30, r = -1, f = 1.2, s = 1)
 }
 \arguments{
   \item{series}{a matrix containing the two time series. }
@@ -21,26 +21,16 @@ to predict another data set. It then computes the error of the model.
   \item{f}{factor to increase the neighborhood size if not enough neighbors were found.}
   \item{s}{steps to be forecasted.}
 }
-\details{
-}
 \value{
 The output consists of a matrix with \code{s} rows, containing the steps forecasted in first column
 and the relative forecast error in the second column. Relative means that the forecast error is divided
 by the standard deviation of the second (the one which is forecasted) data set. 
-
 }
-\references{ }
-\author{ }
-\note{}
-\seealso{ }
 \examples{
-
-
 dat <- as.vector(sunspot.month)
 dat<- cbind(dat, dat + 10*rnorm(2988))
 xzeroo <- xzero(dat,s=100)
 plot(xzeroo[,1],xzeroo[,2],t="l",xlab="Time steps",ylab="Relative Error",
 main="Cross prediction accuracy of a zeroth order model")
-
 }
 \keyword{ ts }

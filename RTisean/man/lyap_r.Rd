@@ -16,22 +16,14 @@ lyap_r(series, l = -1, x = 0, c = 1, m = 2, d = 1, t = 0, r = -1, s = 50)
   \item{r}{minimal length scale for the neighborhood search.}
   \item{s}{number of iterations in time.}
 }
-\details{}
 \value{A matrix containing the number of the iteration in the first column
 and the logarithm of the stretching factor in the second column.}
-
 \references{M. T. Rosenstein, J. J. Collins, C. J. De Luca, A practical method for calculating largest 
 Lyapunov exponents from small data sets, Physica D 65, 117 (1993).}
-
-\author{ }
-\note{ }
 \seealso{ \code{\link{lyap_k}}}
 \examples{
-
-
 dat <- logistic()
 lyapoutput <- lyap_r(dat,s=200)
 plot(exp(lyapoutput [,2]),xlab="Iteration",ylab="Maximum Lyapunov exponent",t="l")
-
 }
 \keyword{ ts}

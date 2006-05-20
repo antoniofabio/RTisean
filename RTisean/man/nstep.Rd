@@ -25,15 +25,8 @@ nstep(series, l = -1, x = 0, m = -1, c = -1, d = 1, L = 1000, k = 30, r = -1, f 
 \details{Once in an iteration the algorithm creates a point which is far away from the original time series,
  the procedure stops since no neighbors can be found and no local
 model can be constructed (from Kantz, pag. 330).}
-
 \value{A vector containing the forecasted time series.}
-\references{ }
-\author{ }
-\note{ }
-\seealso{ }
 \examples{
-
-x11()
 par(mfrow=c(2,1))
 dat<-logistic(r=3.6)
 nsteppred<-nstep(dat[1:950])
@@ -48,7 +41,6 @@ legend(40,0.3, "Artificial data",fill=2,bty="n",cex=0.7)
 par(cex.lab=0.8)
 plot(abs(dat[951:1000][1:validiter]-nsteppred),t="l",xlim=c(1,50),xlab="Time",ylab="Distance from original time series")
 text(40,1,paste("Last neighbor found at iteration", validiter),cex=0.7)
-
 }
 \keyword{ models}
 \keyword{ ts}
