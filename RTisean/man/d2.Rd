@@ -40,7 +40,7 @@ according to the list item:
 }
 \examples{
 dat <- henon(10000)
-d2output <- d2(dat,pretty=T)
+d2output <- d2(dat,pretty=TRUE)
 cordim <- d2output$.d2
 plot(cordim$dim1,t="l",ylim=c(0,7),col=2,xlab="Epsilon",
 ylab=expression(D[2](m,epsilon)),log="x", main="Correlation Dimension Plot")

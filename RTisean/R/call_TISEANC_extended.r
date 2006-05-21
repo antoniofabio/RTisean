@@ -5,12 +5,11 @@ call_TISEANC_extended <- function(a, options, function_name) # a is a numeric ve
    options = paste(" ",options," -V0 ",sep="")
    tin=input_filename()
    tout=output_filename()
-   options=paste(tin,options,"-o",tout)
+   options=paste(tin," ",options," -o",tout, sep="")
 
    out=write_to_inputfile(a)
    if (out==1){
-        print("wrong input")
-	return()
+        stop("wrong input")
    }	
 
    out = .C("call_TISEAN_bare", as.character(options), as.character(function_name),PACKAGE="RTisean")

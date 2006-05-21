@@ -107,64 +107,60 @@ infile=NULL;
     }
   }
   else
-    check_alloc(ofname=(char*)calloc(strlen(outfile)+10,(size_t)1));
+		check_alloc(ofname=(char*)calloc(strlen(outfile)+10,(size_t)1));
   
-  series=(double*)get_series(infile,&length,exclude,column,verbosity);
-  check_alloc(ynew=(double*)malloc(sizeof(double)*length));
+	series=(double*)get_series(infile,&length,exclude,column,verbosity);
+	check_alloc(ynew=(double*)malloc(sizeof(double)*length));
   
-  if (verbosity&VER_USR1) {
-    for (iter=1;iter<=iterations;iter++) {
-      for (i=1;i<length-1;i++)
-	ynew[i]=(series[i-1]+2.0*series[i]+series[i+1])/4.;
-	sprintf(ofname,"%s.%d",outfile,iter);
-	test_outfile(ofname);
-	file=fopen(ofname,"w");
-	if (verbosity&VER_INPUT)
-	  fprintf(stderr,"Opened %s for writing\n",ofname);
-	if (stdo && (iter == iterations))
-	  fprintf(stdout,"%e\n",series[0]);
-	fprintf(file,"%e\n",series[0]);
-	if (stdo && (iter == iterations)) {
-	  if (verbosity&VER_INPUT)
-	    fprintf(stderr,"Writing to stdout\n");
-	}
-	for (i=1;i<length-1;i++) {
-	  if (stdo && (iter == iterations))
-	    fprintf(stdout,"%e\n",series[i]=ynew[i]);
-	  fprintf(file,"%e\n",series[i]=ynew[i]);
-	}
-	if (stdo && (iter == iterations))
-	  fprintf(stdout,"%e\n",series[length-1]);
-	fprintf(file,"%e\n",series[length-1]);
-	fclose(file);
-    }
-  }
-  else {
-    for (iter=1;iter<=iterations;iter++) {
-      for (i=1;i<length-1;i++) {
-	ynew[i]=(series[i-1]+2.0*series[i]+series[i+1])/4.;
+	if (verbosity&VER_USR1) {
+		for (iter=1;iter<=iterations;iter++) {
+			for (i=1;i<length-1;i++)
+				ynew[i]=(series[i-1]+2.0*series[i]+series[i+1])/4.;
+			sprintf(ofname,"%s.%d",outfile,iter);
+			test_outfile(ofname);
+			file=fopen(ofname,"w");
+			if (verbosity&VER_INPUT)
+				fprintf(stderr,"Opened %s for writing\n",ofname);
+			if (stdo && (iter == iterations))
+				fprintf(stdout,"%e\n",series[0]);
+			fprintf(file,"%e\n",series[0]);
+			if (stdo && (iter == iterations)) {
+				if (verbosity&VER_INPUT)
+					fprintf(stderr,"Writing to stdout\n");
+			}
+			for (i=1;i<length-1;i++) {
+				if (stdo && (iter == iterations))
+					fprintf(stdout,"%e\n",series[i]=ynew[i]);
+				fprintf(file,"%e\n",series[i]=ynew[i]);
+			}
+			if (stdo && (iter == iterations))
+				fprintf(stdout,"%e\n",series[length-1]);
+			fprintf(file,"%e\n",series[length-1]);
+			fclose(file);
+		}
+	} else {
+		for (iter=1;iter<=iterations;iter++) {
+			for (i=1;i<length-1;i++) {
+				ynew[i]=(series[i-1]+2.0*series[i]+series[i+1])/4.;
       }
       for (i=1;i<length-1;i++)
-	series[i]=ynew[i];
-    }
+				series[i]=ynew[i];
+		}
     if (!stdo) {
-      sprintf(ofname,"%s.%d",outfile,iterations);
-      file=fopen(ofname,"w");
-      if (verbosity&VER_INPUT)
-	fprintf(stderr,"Opened %s for writing\n",ofname);
-      for (i=0;i<length;i++)
-	fprintf(file,"%e\n",series[i]);
-      fclose(file);
-    }
-    else {
-      if (verbosity&VER_INPUT)
-	fprintf(stderr,"Writing to stdout\n");
-      for (i=0;i<length;i++)
-	fprintf(stdout,"%e\n",series[i]);
+			sprintf(ofname,"%s.%d",outfile,iterations);
+			file=fopen(ofname,"w");
+			if (verbosity&VER_INPUT)
+				fprintf(stderr,"Opened %s for writing\n",ofname);
+			for (i=0;i<length;i++)
+				fprintf(file,"%e\n",series[i]);
+			fclose(file);
+		}
+		else {
+			if (verbosity&VER_INPUT)
+				fprintf(stderr,"Writing to stdout\n");
+			for (i=0;i<length;i++)
+				fprintf(stdout,"%e\n",series[i]);
     }
   }
-
   return 0;
 }
-
-

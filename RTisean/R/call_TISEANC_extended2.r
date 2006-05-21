@@ -5,7 +5,7 @@ call_TISEANC_extended2 <- function(a, options, function_name,suffix) # a is a nu
    options = paste(" ",options," -V0 ",sep="")
    tin=input_filename()
    tout=output_filename()
-   options=paste(tin,options,"-o",tout)
+   options=paste(tin," ",options," -o",tout, sep="")
 
    out=write_to_inputfile(a)
    if (out==1){

@@ -2,13 +2,11 @@ low121 <- function(series,l=-1,x=0,c=1,i=1){
 
 options = ""
 
-if (mode(series)!="numeric"){
-	print("wrong input")
-	return()
-}
+if (mode(series)!="numeric")
+	stop("wrong input")
 
 if (checkposint(l)){
-		options = paste(options," -l",i2s(l)," ",sep="")	
+	options = paste(options," -l",i2s(l)," ",sep="")	
 }
 else{
 	if (tneq(l,-1)){
