@@ -29,11 +29,11 @@ c Copyright (C) T. Schreiber (1999)
 
       nfound=0
       kloop=1
-      call logs("debug neigh start")
+!      call logs("debug neigh start")
       if(m.eq.1) kloop=0
-      call logs("debug neigh 1")
+!      call logs("debug neigh 1")
       jj=int(y(n)/eps)
-      call logs("debug neigh 2")
+!      call logs("debug neigh 2")
 
       kk=int(y(n-(m-1)*id)/eps)
       do 10 j=jj-1,jj+1                               ! scan neighbouring boxes

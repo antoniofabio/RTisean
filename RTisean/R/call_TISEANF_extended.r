@@ -7,7 +7,7 @@ call_TISEANF_extended <- function(a, bare_options, function_name) # a is a numer
     }
     tin=input_filename()
     tout=output_filename()
-    options=paste(tin,bare_options," -V0 -o",tout,"\n")
+    options=paste(tin," ",bare_options," -V0 -o",tout,"\n", sep="")
     
 	toptions=param_filename(0)
 	.C("write_string_to_file2",as.character(options),as.integer(0),as.character(toptions),PACKAGE="RTisean")

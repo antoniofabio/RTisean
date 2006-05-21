@@ -304,7 +304,7 @@ verbosity=0xff;
   if (CAST)
     make_cast(file);
   fclose(file);
-  
+
   return 0;
 }
 
