@@ -147,7 +147,8 @@ infile=NULL;
 				series[i]=ynew[i];
 		}
     if (!stdo) {
-			sprintf(ofname,"%s.%d",outfile,iterations);
+//			sprintf(ofname,"%s.%d",outfile,iterations);
+			sprintf(ofname,"%s.%d",outfile,1);
 			file=fopen(ofname,"w");
 			if (verbosity&VER_INPUT)
 				fprintf(stderr,"Opened %s for writing\n",ofname);
