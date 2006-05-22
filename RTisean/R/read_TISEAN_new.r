@@ -28,7 +28,7 @@ read_TISEAN_new <- function(suffix) # a is a numeric vector, function_name is th
    	return(out)
    }
    else{
-	print("no result returned")
+	warning("no result returned")
         return()
    }
 

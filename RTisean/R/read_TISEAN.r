@@ -1,4 +1,4 @@
-read_TISEAN <- function(suffix) # a is a numeric vector, function_name is the TISEAN function name
+read_TISEAN <- function(suffix)
 {
 	MAX_BLOCKS = 100	
 
@@ -23,7 +23,6 @@ read_TISEAN <- function(suffix) # a is a numeric vector, function_name is the TI
 		return(out)
 	}
 	else{
-		print("no result returned")
-		return()
+		warning("no result returned")
 	}
 }

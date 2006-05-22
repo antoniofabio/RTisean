@@ -9,13 +9,13 @@ call_TISEANC_extended3 <- function(a, options, function_name,suffix,param,paramc
    paramoptions=""
    for (i in 1:length(param)){
 	write_to_file(param[[i]],param_filename(i))
-      paramoptions=paste(paramoptions," -",paramchars[i]," ",param_filename(i)," ",sep="")
+      paramoptions=paste(paramoptions," -",paramchars[i],"",param_filename(i)," ",sep="")
    }	
 
    options = paste(" ",options," ",paramoptions," -V0 ",sep="")
    tin=input_filename()
    tout=output_filename()
-   options=paste(tin,options,"-o",tout)
+   options=paste(tin,options,"-o",tout,sep="")
 
    out=write_to_inputfile(a)
    if (out==1){
