@@ -15,7 +15,7 @@ logistic(iter = 1000, r = 4, x = 0.2, trans = 0)
 \value{ A vector containing the time series. }
 \examples{
 dat <- logistic(10000,3.95,0.1,1000)
-delayeddat <- delay(dat)
+delayeddat <- RT_delay(dat)
 plot(delayeddat,xlab="x(t)",ylab="x(t+1)", main="Logistic Model Embedded Chaotic Attractor",cex=0.6,col=2)
 }
 \keyword{ ts }

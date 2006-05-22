@@ -1,4 +1,4 @@
-predict <- function(series,d=-1,m=-1,r=-1,v=-1,s=1,l=-1,x=0,c=1){
+RT_predict <- function(series,d=-1,m=-1,r=-1,v=-1,s=1,l=-1,x=0,c=1){
 
 options = ""
 
@@ -96,11 +96,6 @@ else{
 	errormessage("s",s)
 	return()
 }
-
-
-
-#debug
- 
 
 out=call_TISEANF_extended(series,options,"predict")
 return(out)

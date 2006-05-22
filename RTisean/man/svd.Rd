@@ -1,9 +1,9 @@
-\name{svd}
-\alias{svd}
+\name{RT_svd}
+\alias{RT_svd}
 \title{SVD}
 \description{Performs a global SVD. }
 \usage{
-svd(series,l=-1,x=0,c=1,m=2,d=1,q=-1)
+RT_svd(series,l=-1,x=0,c=1,m=2,d=1,q=-1)
 }
 \arguments{
   \item{series}{a vector or a matrix.}
@@ -23,7 +23,7 @@ svd(series,l=-1,x=0,c=1,m=2,d=1,q=-1)
 \seealso{ \code{\link{pc}}} 
 \examples{
 dat<-logistic()
-svdout<-svd(dat,q=2)
+svdout<-RT_svd(dat,q=2)
 plot(svdout$project)
 }
 \keyword{ math }

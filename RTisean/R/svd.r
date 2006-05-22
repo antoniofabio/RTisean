@@ -1,4 +1,4 @@
-svd <- function(series,l=-1,x=0,c=1,m=2,d=1,q=-1){
+RT_svd <- function(series,l=-1,x=0,c=1,m=2,d=1,q=-1){
 
 options = ""
 
@@ -58,11 +58,6 @@ else{
 		return()
 	}
 }
-
-
-
-#debug
- 
 
 out=call_TISEANC_extended(series,options,"svd")
 
