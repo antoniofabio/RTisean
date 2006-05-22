@@ -10,7 +10,7 @@ RT_delay(series, d = 1, m = 2, l = -1, x = 0, c = 1)
 \item{d}{delay.}
 \item{m}{embedding dimension.}
 \item{l}{number of values to be read.}
-\item{x}{TO DO}
+\item{x}{number of lines to be ignored.}
 \item{c}{column to be read.}
 }
 
