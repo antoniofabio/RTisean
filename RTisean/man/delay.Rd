@@ -18,7 +18,6 @@ RT_delay(series, d = 1, m = 2, l = -1, x = 0, c = 1)
 \examples{
 dat <- henon(10000)
 delaycohord <- RT_delay(dat,d=2,l=1000)
-
 }
 
 \keyword{math}
