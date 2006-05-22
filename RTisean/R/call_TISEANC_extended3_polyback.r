@@ -15,24 +15,23 @@ call_TISEANC_extended3_polyback <- function(a, options, function_name,suffix,par
    options = paste(" ",options," ",paramoptions," -V0 ",sep="")
    tin=input_filename()
    tout=output_filename()
-   options=paste(tin,options,"-o",tout)
+   options=paste(tin,options,"-o",tout,sep="")
 
    out=write_to_inputfile(a)
-   if (out==1){
-	print("wrong input")
-        return()
-   }	
+	if (out==1)
+		stop("wrong input")
+
 
    out = .C("call_TISEAN_bare", as.character(options), as.character(function_name),PACKAGE="RTisean")
    
-   .C("delete_file",as.character(tin),PACKAGE="RTisean")
+	file.remove(as.character(tin))
    for (i in 1:length(param)){
-	.C("delete_file",param_filename(i),PACKAGE="RTisean")
+		file.remove(param_filename(i))
    }
    out=list()
    suffix=polyback_aux()
    for (i in 1:length(suffix)){
-   	out[[i]] = read_TISEAN_new(paste(".",suffix[i],sep=""))
+   	out[[i]] <- read_TISEAN_new(paste( ifelse(suffix[i]!="", ".", ""), suffix[i], sep=""))
    }
    
    return(out)
