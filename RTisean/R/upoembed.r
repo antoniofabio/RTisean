@@ -1,10 +1,9 @@
-upoembed <- function(series,d=-1,m=2,p=1,l=-1,x=0,c=1){
+upoembed <- function(data,d=-1,m=2,p=1,l=-1,x=0,c=1){
 
 	options <- ""
 	
-	if (mode(series)!="numeric"){
-		print("wrong input")
-		return()
+	if (mode(attr(data,"txt"))!="character"){
+		stop("wrong input")
 	}
 	
 	if (checkposint(l)){
@@ -25,13 +24,7 @@ upoembed <- function(series,d=-1,m=2,p=1,l=-1,x=0,c=1){
 		return()
 	}
 	
-	if (checkcolumns(series,c,1)){
-		options=paste(options," -c",c," ",sep="")
-	}
-	else{
-		errormessage("c",c)
-		return()
-	}
+	options=paste(options," -c",c," ",sep="")
 	
 	if (checkposint(d)){
 		options = paste(options," -d",i2s(d)," ",sep="")	
@@ -63,6 +56,6 @@ upoembed <- function(series,d=-1,m=2,p=1,l=-1,x=0,c=1){
 		return()
 	}
 	
-	out=call_TISEANF_extended(series,options,"upoembed")
+	out=call_TISEANF_extended_upoembed(data,options,"upoembed")
 	return(out)
 }

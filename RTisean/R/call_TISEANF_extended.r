@@ -13,8 +13,8 @@ call_TISEANF_extended <- function(a, bare_options, function_name) # a is a numer
 	.C("write_string_to_file2",as.character(options),as.integer(0),as.character(toptions),PACKAGE="RTisean")
 	.Fortran(function_name,as.character(toptions),PACKAGE="RTisean")
 	file.remove(toptions, tin)
-        out <- read_TISEAN("")
-    return(out)
+	out <- read_TISEAN("")
 
+	return(out)
 }
 

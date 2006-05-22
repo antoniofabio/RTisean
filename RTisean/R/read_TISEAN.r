@@ -24,5 +24,6 @@ read_TISEAN <- function(suffix)
 	}
 	else{
 		warning("no result returned")
+		return(NULL)
 	}
 }

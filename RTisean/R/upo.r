@@ -140,7 +140,7 @@ else{
 #debug
  
 
-out=call_TISEANF_extended(series,options,"upo")
+	out <-call_TISEANF_extended_upo(series,options,"upo")
 
   if(pretty)  #C and following lines
   {out=cleanfinalout(out,1) 

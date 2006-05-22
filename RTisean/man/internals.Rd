@@ -6,6 +6,8 @@
 \alias{call_TISEANC_extended3}
 \alias{call_TISEANC_extended3_polyback}
 \alias{call_TISEANF_extended}
+\alias{call_TISEANF_extended_upo}
+\alias{call_TISEANF_extended_upoembed}
 \alias{call_TISEANF_extended2}
 \alias{call_TISEANF_extended3}
 \alias{chartonum}
