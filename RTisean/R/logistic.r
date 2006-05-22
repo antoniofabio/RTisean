@@ -1,10 +1,10 @@
-logistic=function(iter=1000, r=4,x=0.2,trans=0) {
+logistic=function(iter=1000, r=4,x=0.2,t=0,nsd=0) {
 out=NULL
-out[1]=x
+out[1]=x+rnorm(1,sd=nsd)
 
-  for (i in 2:(iter+trans))
-  out[i]=r*out[i-1]*(1-out[i-1])
+  for (i in 2:(iter+t))
+  out[i]=r*out[i-1]*(1-out[i-1])+rnorm(1,sd=nsd)
 
-out=out[(trans+1):(trans+iter)]
+out=out[(t+1):(t+iter)]
 return(out)
 }
