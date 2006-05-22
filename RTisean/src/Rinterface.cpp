@@ -12,6 +12,8 @@
 #define MAX_NAME_LENGTH 30
 
 #include "mylog.h"
+//#define RT_DEBUG
+#include "debug.h"
 
 #include <string> //C++ header for my_itoa
 
@@ -677,8 +679,7 @@ static void format_extended_new(char* filename, int* s, int* e, int* t, int* c, 
 // not '+' or '-'; otherwise it is the number of words in the first line of the block.
 
 // the array arguments s,e,t sh should be of length equal to limit 
-	
-	
+	RT_TRACE("format_extended_new: Opening file %s\n", filename);
 	FILE *f = fopen(filename,"r");
 	if (f == NULL) {
 		*c=0;	
