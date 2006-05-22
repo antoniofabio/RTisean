@@ -16,8 +16,9 @@ RT_delay(series, d = 1, m = 2, l = -1, x = 0, c = 1)
 
 \value{A matrix containing the delayed time series.}
 \examples{
-dat <- henon(10000)
-delaycohord <- RT_delay(dat,d=2,l=1000)
+dat <- logistic(10000,4,0.1,1000)
+delayeddat <- delay(dat)
+plot(delayeddat,xlab="x(t)",ylab="x(t+1)", main="Logistic Model Delayed Chaotic Attractor",cex=0.6,col=2)
 }
 
 \keyword{math}
