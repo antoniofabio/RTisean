@@ -29,8 +29,8 @@ ghkss(series, l = -1, x = 0, c = 1, m = 5, d = 1, q = 3, k = 30, r = -1, i = 1, 
 
 dat <- logistic(iter=10000,r=3.8, noisesd=0.01)
 filteredat <- ghkss(dat)
-delayedfiltered <- delay(filteredat)
-delayed <- delay(dat)
+delayedfiltered <- RT_delay(filteredat)
+delayed <- RT_delay(dat)
 plot(delayed,cex=0.1,xlab="x(t)",ylab="x(t+1)",main="Delayed Logistic Chaotic Attractor")
 points(delayedfiltered,col=2,cex=0.1)
 legend(0.5,0.4, c("Noisy data","Filtered data"),fill=c(1,2), bty="n",cex=0.8)
