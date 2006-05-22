@@ -25,11 +25,14 @@ ghkss(series, l = -1, x = 0, c = 1, m = 5, d = 1, q = 3, k = 30, r = -1, i = 1, 
  reduction methods for chaotic data, CHAOS 3, 127 (1993).}
 \seealso{  \code{\link{project}} }
 \examples{
-dat <- lynx + 500*rnorm(114)
-dat[dat<0] <- 0
-plot(dat,ylab="Lynx data")
+#CONTINUOUS DATA NEEDED?
+
+dat <- logistic(iter=10000,r=3.8, noisesd=0.01)
 filteredat <- ghkss(dat)
-filteredat <- ts(filteredat, start=1821, end=1934)
-points(filteredat ,col=2,t="l")
+delayedfiltered <- delay(filteredat)
+delayed <- delay(dat)
+plot(delayed,cex=0.1,xlab="x(t)",ylab="x(t+1)",main="Delayed Logistic Chaotic Attractor")
+points(delayedfiltered,col=2,cex=0.1)
+legend(0.5,0.4, c("Noisy data","Filtered data"),fill=c(1,2), bty="n",cex=0.8)
 }
 \keyword{ts} 

@@ -20,6 +20,7 @@ upoembed(series, d = -1, m = 2, p = 1, l = -1, x = 0, c = 1)
 \seealso{ \code{\link{upo}} }
 \examples{
 \dontrun{
+dat <- henon(1000)
 upoout <- upo(dat,m=2, v=0.1, n=70, p=6)
 upoemb <- upoembed(upoout,d=1)
 }

@@ -28,8 +28,8 @@ each composed by:
 }
 \seealso{\code{\link{surrogates}}}
 \examples{
-dat <- henon(10000)
-endtoendoutput <- endtoend(dat,m=2)
+dat <- henon(1000)
+mismatch <- endtoend(dat,m=2)
 }
 \keyword{ math } 
 \keyword{ ts } 
