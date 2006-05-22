@@ -78,15 +78,12 @@ else{
 }
 
 
-if (!is_matrix(p)){
-	print("wrong input")
-        return()
-}
+if (!is.matrix(p))
+	stop("wrong input")
+
 else{
-    if (dim(p)[2]!=2 | tneq(p,round(p)) ){
-        print("wrong input")
-        return()
-    }
+    if (dim(p)[2]!=2 | tneq(p,round(p)) )
+        stop("wrong input")
 }
 
 param=list()
