@@ -11,23 +11,22 @@ call_TISEANF_extended3 <- function(a, bare_options, function_name,suffix,param,p
 
 
     out=write_to_inputfile(a)
-    if (out==1){
-	print("wrong input")
-        return()
-    }
+    if (out==1)
+			stop("wrong input")
+
     tin=input_filename()
     tout=output_filename()
-    options=paste(tin,options," -V0 -o",tout)
+    options=paste(tin," ",options," -V0 -o",tout, sep="")
     
 	toptions=param_filename(0)
 	.C("write_string_to_file2",as.character(options),as.integer(0),as.character(toptions),PACKAGE="RTisean")
 	.Fortran(function_name,as.character(toptions),PACKAGE="RTisean")
-	.C("delete_file",as.character(toptions),PACKAGE="RTisean")
+	file.remove(toptions)
 
    for (i in 1:length(param)){
-	.C("delete_file",param_filename(i),PACKAGE="RTisean")
+		file.remove(param_filename(i))
    }
-   .C("delete_file",as.character(tin),PACKAGE="RTisean")
+	file.remove(tin)
 	
    out=list()
    for (i in 1:length(suffix)){
