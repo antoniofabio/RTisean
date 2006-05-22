@@ -4,7 +4,7 @@
 #ifdef RT_DEBUG
 #define RT_TRACE Rprintf
 #else
-#define RT_TRACE(x)
+#define RT_TRACE
 #endif
 
 #endif
