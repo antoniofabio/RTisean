@@ -41,14 +41,11 @@ A list composed by:
 }
 
 \examples{
-dat <- logistic(iter=10000,r=3.8, noisesd=0.015)
-filteredat <- rbf(dat,L=1000,n=9000)
-pred <- filteredat$pred
-delayedfiltered <- delay(pred)
-delayed <- delay(dat[9000:10000])
-plot(delayed,cex=0.1,xlab="x(t)",ylab="x(t+1)",main="Delayed Logistic Chaotic Attractor")
-points(delayedfiltered,col=2,cex=0.1)
-legend(0.5,c("Noisy data","Filtered data"),fill=c(1,2), bty="n",cex=0.8)
+dat<-sin(1:10000)+rnorm(10000)/5
+rbfout<-rbf(dat,L=100,n=9900)
+pred<-rbfout$pred
+plot(dat[9901:10000],t="l",xlab="Time",ylab="Sin data")
+points(pred,t="l",col=2)
 }
 \keyword{ ts } 
 
