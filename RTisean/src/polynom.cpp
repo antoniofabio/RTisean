@@ -181,11 +181,13 @@ double ns_polynom::make_error(unsigned long i0,unsigned long i1)
   return err /= ((long)i1-(long)i0-(DIM-1)*DELAY);
 }
 
-void ns_polynom::make_cast(FILE *fcast)
+void ns_polynom::make_cast(char *fout)
 {
   int i,j,k,hi;
   double casted;
+	FILE *fcast;
   
+	fcast = fopen(fout, "a");
   for (i=0;i<=(DIM-1)*DELAY;i++)
     series[i]=series[LENGTH-(DIM-1)*DELAY-1+i];
 
@@ -300,10 +302,9 @@ verbosity=0xff;
     out_error=make_error(INSAMPLE,LENGTH);
     fprintf(file,"#average out of sample error= %e\n",sqrt(out_error)/varianz);
   }
-
-  if (CAST)
-    make_cast(file);
   fclose(file);
+  if (CAST)
+    make_cast(outfile);
 
   return 0;
 }

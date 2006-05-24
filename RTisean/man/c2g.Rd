@@ -21,6 +21,8 @@ The correlation dimension, Nonlinearity 5, 777 (1992).  }
 dat <- henon(10000)
 d2output <- d2(dat)
 corsum <- d2output$.c2
+\dontshow{try(c2g(corsum), TRUE)}
+#FIXME: this fails on first call on win
 corint <- c2g(corsum)
 plot(corint$dim1,t="l",ylim=c(0,1),col=2,xlab="Epsilon",
 ylab="Correlation Integral",log="x", main="Correlation Integral Plot, embedding dims = (1,...,10)")

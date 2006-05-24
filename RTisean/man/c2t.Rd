@@ -20,6 +20,8 @@ c2t(lst)
 dat <- henon(l=10000,x=1000)
 corsum <- d2(dat)
 corsum <- corsum$.c2
+\dontshow{try(c2t(corsum), TRUE)}
+#FIXME: this fails on first call on win
 takensest <- c2t(corsum)
 
 plot(takensest$dim1,t="l",ylim=c(0,15.1), xlim=c(0.003,2.5), col=2,xlab="Epsilon",

@@ -35,7 +35,7 @@ void decode(int *out,int dim,long cur,long fac);
 
 double make_error(unsigned long i0,unsigned long i1);
 
-void make_cast(FILE *fcast);
+void make_cast(char *fout);
 
 int main(int argc,char **argv);
 };
