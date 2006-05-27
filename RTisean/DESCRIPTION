@@ -1,7 +1,0 @@
-Package: RTisean
-Version: 0.1-2
-Title: R port of TISEAN (http://www.mpipks-dresden.mpg.de/~tisean/TISEAN_2.1/index.html)
-Author: R porting by Alexei Grigoriev, documentation by Gianluca Gazzola, minor bug fixing by Antonio Fabio Di Narzo
-Maintainer: Antonio, Fabio Di Narzo <antonio.dinarzo@studio.unibo.it>
-Description: R port of TISEAN (http://www.mpipks-dresden.mpg.de/~tisean/TISEAN_2.1/index.html)
-License: GPL (version 2 or later)
