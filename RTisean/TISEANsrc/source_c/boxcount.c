@@ -197,7 +197,7 @@ void start_box(void)
     if (1<maxembed)
       for (i=0;i<epsi;i++) {
 	if (found[i])
-	  next_dim(0,2,found[i],act[i]);
+	  next_dim(2,found[i],act[i]);
       }
   }
 
