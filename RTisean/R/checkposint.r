@@ -1,4 +1,3 @@
 checkposint <- function(a){
-	if((round(a)==a)&&(a>0))	
-		return(TRUE)
+	checkint(a) && (a>0)
 }
