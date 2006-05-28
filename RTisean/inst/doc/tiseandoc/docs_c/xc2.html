@@ -1,0 +1,132 @@
+<html>
+<head>
+<title>
+xc2
+</title>
+</head>
+<body bgcolor=white>
+<h1 align=center>Description of the program: <font color=Blue>xc2
+</font>
+</h1>
+<hr>
+Cross-correlation integral of two data sets (i.e. two columns
+in a ssingle file)
+in 2 to <font color=Red>M</font> embedding dimensions.
+Together with the (auto-)correlation intergrals of each of the two
+sets, this gives an impression of their similarity or dissimilarity. 
+If the minimal number of centers <font color=Red>n</font> is small,
+the program is fast but the results suffer from large statistical
+fluctuations on the large length scales. Apart from statistical
+fluctuations, the results are invariant under the exchange of the
+sequence of the two files.
+<p>
+As a special case, it is possible (but somewhat inefficient) to compute an
+ordinary correlation integral by taking the two sets to be the same.
+This can be done by selecting the same column twice, for example 
+<font color=blue><tt> -c1,1 </tt></font>.
+
+<hr>
+<h2 align=center>Usage:</h2>
+<center>
+<font color=Red>xc2 -M# -n# -t# [other options] file </font>
+<p>
+Everything not being a valid option will be interpreted as a potential
+datafile name. 
+<p>
+Possible options are:
+<p>
+<table border=2>
+<tr>
+<th>Option
+<th>Description
+<th>Default
+</tr>
+<tr bgcolor="pink">
+<th>-M#
+<td> maximal embedding dimension
+<td> <font color=Red>to be specified!</font>
+</tr>
+<tr bgcolor="pink">
+<th>-n#
+<td> minimal number of centers
+<td> <font color=Red>to be specified!</font>
+</tr>
+<tr bgcolor="pink">
+<th>-t#
+<td> minimal time separation
+<td> <font color=Red>to be specified!</font>
+</tr>
+<tr>
+<th>-d#
+<td> delay for the embedding
+<td> 1
+</tr>
+<tr>
+<th>-N#
+<td> maximal number of pairs  
+<td> 1000
+</tr>
+<tr>
+<th>-##
+<td> number of length scale values
+<td> 2 per octave
+</tr>
+<tr>
+<th>-r#
+<td> minimal length scale
+<td> smallest distance of points in 2 dimensions
+</tr>
+<tr>
+<th>-R#
+<td> maximal length scale 
+<td> MAX(xmax-xmin,ymax-ymin)
+</tr>
+<tr>
+<th>-l#
+<td> maximal number of values to read from files
+<td> read whole file
+</tr>
+<tr>
+<th>-x#
+<td> number of lines to be skipped at the beginning
+<td> 0
+</tr>
+<tr>
+<th>-c#[,#]
+<td> <a href=../general.html#columns>columns to be read</a>
+<td> 1,2
+</tr>
+<tr>
+<th>-o#
+<td> <a href=../general.html#outfile>output file name</a>
+<td> file_xc2<br>
+ where mm is the embedding dimension.
+</tr>
+<tr>
+<th>-V#
+<td> <a href=../general.html#verbosity>verbosity level</a>
+<td> 0 (= report only fatal errors)
+</tr>
+<tr>
+<th>-h
+<td> show these options
+<td> none
+</tr>
+</table>
+</center>
+<hr>
+<h2 align=center>Description of the Output:</h2>
+Output: files  <font color=Red>outfile_mm</font> for each embedding
+dimension between mm=2 and mm=M, containing in the second column the
+fraction of pairs of points with distance smaller than the value
+reportet in the first column.
+
+<hr>
+View the <a href="../../source_f/xc2.f">FORTRAN source</a>.
+<hr>
+See also <a href="../docs_f/c2.html">c2</a> 
+ and <a href="d2.html">d2</a>
+<hr>
+<a href=../contents.html>Table of Contents</a> * <a href="../../index.html" target="_top">TISEAN home</a>
+</body>
+</html>
