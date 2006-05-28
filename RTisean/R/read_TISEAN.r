@@ -33,7 +33,7 @@ read_TISEAN <- function(filenames,split=FALSE) {
 		}
 		ans[[i]] <- ansi
 	}
-
+	names(ans) <- ofn
 	return(ans)
 }
 
