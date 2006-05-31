@@ -2,7 +2,7 @@ call_TISEANF_extended_upo <- function(a, bare_options, function_name) # a is a n
 {
     out=write_to_inputfile(a)
     if (out==1){
-	print("wrong input")
+	stop("wrong input")
         return()
     }
     tin=input_filename()
