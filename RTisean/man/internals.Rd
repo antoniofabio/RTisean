@@ -40,11 +40,6 @@
 \alias{write_to_file}
 \alias{write_to_inputfile}
 \alias{dayssn}
-\alias{as.character.nativeTisean}
-\alias{as.list.nativeTisean}
-\alias{as.matrix.nativeTisean}
-\alias{call_TISEAN_exec} 
-\alias{print.nativeTisean}
 \title{Internal objects}
 \description{Internal objects}
 \keyword{internal}

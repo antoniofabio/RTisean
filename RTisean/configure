@@ -1,3 +1,0 @@
-cd TISEANsrc
-./configure && make && make install && make clean
-cd ..
