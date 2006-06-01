@@ -1,7 +1,8 @@
 Package: RTisean
-Version: 0.1-2
-Title: R port of TISEAN (http://www.mpipks-dresden.mpg.de/~tisean/TISEAN_2.1/index.html)
-Author: R porting by Alexei Grigoriev, documentation by Gianluca Gazzola, minor bug fixing by Antonio Fabio Di Narzo
+Date: 1 June 2006
+Version: 2.0
+Title:  R interface to Tisean algorithms
+Author: Tisean authors: Rainer Hegger, Holger Kantz, Thomas Schreiber.  RTisean  documentation Gianluca Gazzola
 Maintainer: Antonio, Fabio Di Narzo <antonio.dinarzo@studio.unibo.it>
-Description: R port of TISEAN (http://www.mpipks-dresden.mpg.de/~tisean/TISEAN_2.1/index.html)
+Description: Algorithms for time series analysis from nonlinear dynamical systems theory originally made available by Rainer Hegger, Holger Kantz and Thomas Schreiber at the site http://www.mpipks-dresden.mpg.de/~tisean/ .  A related R package (tseriesChaos by Antonio, Fabio Di Narzo) contains rewritten versions of a few of the TISEAN algorithms.   The intention of the present package is to port the TISEAN algorithms to R with minimal code changes.  It is in an alpha version state, though most of the algorithms should be usable.  Correspondence should be sent to either Marji Lines, lines@dss.uniud.it, or to the current maintainer of the package.  This version consists of TISEAN code with modifications by Alexei Grigoriev, Gianluca Gazzola and Antonio, Fabio Di Narzo.
 License: GPL (version 2 or later)
