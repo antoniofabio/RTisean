@@ -26,7 +26,7 @@ each composed by:
 \item{slip}{ The contribution of the mismatch in the first derivative.}
 \item{weighted}{The weighted averaged mismatch.}
 }
-\seealso{\code{\link{surrogates}}}
+%\seealso{\code{\link{surrogates}}}
 \examples{
 dat <- henon(1000)
 mismatch <- endtoend(dat,m=2)
