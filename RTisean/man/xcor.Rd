@@ -17,7 +17,7 @@ xcor(series, l = -1, x = 0, c = -1, D = 100)
 \examples{
 dat <- henon(1000)[,1]
 noisydat <- dat + rnorm(1000)
-plot(xcor(cbind(dat, noisydat),D=50),t="l", xlab="Lag", 
+plot(xcor(cbind(dat, noisydat),D=50),t="h", xlab="Lag", 
 ylab="(Cross Corr.)/st.dev.", main="Cross correlation between
 clean and noisy univariate Henon data")
 }
