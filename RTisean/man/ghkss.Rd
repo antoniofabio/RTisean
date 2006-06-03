@@ -25,7 +25,7 @@ ghkss(series, l = -1, x = 0, c = 1, m = 5, d = 1, q = 3, k = 30, r = -1, i = 1, 
  reduction methods for chaotic data, CHAOS 3, 127 (1993).}
 \seealso{  \code{\link{project}} }
 \examples{
-#CONTINUOUS DATA NEEDED?
+#FIXME: find more meaningful example
 
 dat <- logistic(iter=10000,r=3.8, noisesd=0.01)
 filteredat <- ghkss(dat)
