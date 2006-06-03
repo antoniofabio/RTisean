@@ -15,10 +15,7 @@ call_TISEANC_extended2 <- function(a, options, function_name,suffix) # a is a nu
 	file.remove(input_filename())
 	out <- list()
 	for (i in 1:length(suffix))
-		out[[i]] = read_TISEAN(suffix[i])
+		out[[i]] <- read_TISEAN(suffix[i])
 	
 	return(out)
 }
-
-
-
