@@ -3,7 +3,7 @@
 \title{Time reversal asymmetry statistic}
 \description{Computes the time reversal asymmetry statistic.}
 \usage{
-timerev(series, d = 1, l = -1, x = 0, c = 1)
+timerev(series, d = 1, l, x = 0, c = 1)
 }
 \arguments{
   \item{series}{a vector or a matrix.}
