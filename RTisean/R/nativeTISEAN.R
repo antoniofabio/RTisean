@@ -163,7 +163,7 @@ as.matrixList <- function(x) {
 	if(!is.null(attr(x,"txt")))
 		writeLines(x, filename)
 	else
-		write(x, filename)
+		write(x, filename, ncolumns=NCOL(x))
 }
 
 #Serialize list elements, optionally separating them by blank lines
