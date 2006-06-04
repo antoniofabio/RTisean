@@ -33,8 +33,11 @@ helpTISEAN <- function(routine) {
 #input: input object, to be serialized before passed to the routine
 #...: named list of routine options (excluding filenames)
 #suffixes: optional char vector of suffixes for each output file produced by 'routinename'
+#FIXME: add case with NO output
 callTISEAN <- function(routinename, input, ..., suffixes=NULL) {
 	opts <- .listToOpts(list(...))
+	if(!getOption("verbose"))
+		opts <- paste(opts, "-V0")
 	if(!missing(input))
 		.serialize(input, tin <- gsub("\\\\","/",tempfile()))
 	else
@@ -55,6 +58,7 @@ callTISEAN <- function(routinename, input, ..., suffixes=NULL) {
 	return(ans)
 }
 
+#Converts (named) argument list to TISEAN-style command line options
 .listToOpts <- function(lst) {
 	if(length(lst)==0) 
 		return()
@@ -105,34 +109,33 @@ print.TISEANblock <- function(x, ...)
 #Should return a list of 'TISEANblock's
 as.list.TISEANoutput <- function(x, ...) {
 	lns <- attr(x,"txt")
-	lns <- lns[lns!=""] #trash out blank lines
 	isComment <- function(x)
-		return(substr(x,1,1)=="#")
-	cmi <- which(isComment(lns)) #Which lines are comments?
-	if(length(cmi)==0)
-		return(list(TISEANblock(lns)))
-	cml <- list()
-	i <- 1; j <- 1
-	repeat {
-		if(i==1)
-			cml[[j]] <- numeric()
-		if ((i>1)&&((cmi[i]-cmi[i-1])>1)) {
-			j <- j+1
-			cml[[j]] <- cmi[i]
-		} else
-			cml[[j]] <- c(cml[[j]],cmi[i])
-		i <- i + 1
-		if(i>length(cmi))
-			break
-	}
-	nblocks <- length(cml)
+		any(grep("^ *#|^ *$", x)) #catch blank lines and lines starting with '#'
+
 	ans <- list()
-	for(j in 1:nblocks) {
-		ans[[(j-1)*2+1]] <- lns[cml[[j]]]
-		if(cml[[j]][length(cml[[j]])]==length(lns))
-			break
-		rng <- c(max(cml[[j]])+1,ifelse(j<nblocks,min(cml[[j+1]])-1, length(lns)))
-		ans[[j*2]] <- TISEANblock(lns[seq(rng[1],rng[2])])
+	cbl <- character()
+	now <- NULL
+	current <- NULL
+	for(cln in lns) {
+		now <- ifelse(isComment(cln), "head","non-head")
+		if(is.null(current))
+			current <- now
+		if(now==current) #add current line to current block
+			cbl <- c(cbl,cln) 
+		else { #type of block change: store current block, start a new one with current line
+			tmpblck <- ifelse(current=="head",
+				list(cbl),
+				list(structure(cbl, class="TISEANblock"))
+			)
+			ans <- c(ans, tmpblck)
+			cbl <- cln
+		}
+		current <- now
+	}
+	#remove spurious blank lines
+	for(i in which(sapply(ans, function(x) !inherits(x,"TISEANblock")))) {
+		tmp <- ans[[i]][ans[[i]]!=""] #remove empty lines
+		ans[[i]] <- ifelse(length(tmp)>0,tmp,"") #but there must be at least one
 	}
 	return(ans)
 }
@@ -141,11 +144,29 @@ as.list.TISEANoutput <- function(x, ...) {
 .serialize <- function(x, filename, ...)
 	UseMethod(".serialize")
 
-.serialize.default <- function(x, filename, ...)
+.serialize.default <- function(x, filename, ...) {
+	if(!is.null(attr(x,"txt")))
+		writeLines(x, filename)
+	else
+		write(x, filename)
+}
+
+#Serialize list elements, optionally separating them by blank lines
+.serialize.list <- function(x, filename, sep=TRUE, ...) {
+	con <- file(filename, "w")
+	lapply(x, 
+		function(bit, filename) {
+			.serialize(bit, filename)
+			if(sep) writeLines("",filename)
+		}, filename=con)
+	close(con)
+}
+
+.serialize.character <- function(x, filename, ...) 
 	write(x, filename)
 
 .serialize.matrix <- function(x, filename)
-	write(t(x), filename)
+	write(t(x), filename, ncolumns=ncol(x))
 
 .serialize.TISEANoutput <- function(x, filename, ...)
 	writeLines(attr(x,"txt"), filename)
