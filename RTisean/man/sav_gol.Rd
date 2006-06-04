@@ -5,7 +5,7 @@
 A Savitzky-Golay filter to either clean the data from high frequency noise or to get
  a better estimate of its derivative of a chosen order.}
 \usage{
-sav_gol(series, l = -1, x = 0, c = -1, m = -1, n = c(2, 2), p = 2, D = 0)
+sav_gol(series, l, x = 0, c, m, n = c(2, 2), p = 2, D = 0)
 }
 \arguments{
   \item{series}{a vector or a matrix.}
@@ -13,7 +13,7 @@ sav_gol(series, l = -1, x = 0, c = -1, m = -1, n = c(2, 2), p = 2, D = 0)
   \item{x}{number of lines to be ignored.}
   \item{c}{column to be read.}  
   \item{m}{number of components to be read (dimension).}
-  \item{n}{a vector cointaining the two lengths of the averaging windows back and forward in time.}
+  \item{n}{a string containing the two lengths of the averaging windows back and forward in time, separated by comma (see example)}
   \item{p}{order of the fitted polynomial.}
   \item{D}{order of the derivative to be estimated.}
 }
@@ -31,8 +31,8 @@ numdata <- 500
 dat <- cos(1:numdata/25)+rnorm(numdata,0,0.1)
 windowlength <- 15
 plot(dat[windowlength:(numdata-windowlength)],xlab="Time",t="l",ylab="Cos Data",ylim=c(-1.5,1.2))
-filteredata <- sav_gol(dat,n=c(windowlength ,windowlength ))
-points(filteredata[windowlength:(numdata-windowlength)],col=2,t="l",lwd=2)
+filteredata <- sav_gol(dat,n="15,15")
+lines(filteredata[windowlength:(numdata-windowlength)],col=2,lwd=2)
 legend(300,-1.2, c("Noisy Data","Filtered Data"),fill=c(1,2), bty="n")
 }
 \keyword{ts}
