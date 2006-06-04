@@ -29,6 +29,9 @@ helpTISEAN <- function(routine) {
 	browseURL(rfile)
 }
 
+.getTempFName <- function()
+	gsub("\\\\","/",tempfile())
+
 #routinename: character vector containing routine name
 #input: input object, to be serialized before passed to the routine
 #...: named list of routine options (excluding filenames)
@@ -39,10 +42,10 @@ callTISEAN <- function(routinename, input, ..., suffixes=NULL) {
 	if(!getOption("verbose"))
 		opts <- paste(opts, "-V0")
 	if(!missing(input))
-		.serialize(input, tin <- gsub("\\\\","/",tempfile()))
+		.serialize(input, tin <- .getTempFName())
 	else
 		tin <- ""
-	tout <- gsub("\\\\","/",tempfile())
+	tout <- .getTempFName()
 	routinename <- paste(routinename, ifelse(.Platform$OS.type=="windows",".exe",""),sep="")
 	if(exists(".TISEANpath"))
 		routinename <- file.path(.TISEANpath, routinename)
@@ -132,12 +135,24 @@ as.list.TISEANoutput <- function(x, ...) {
 		}
 		current <- now
 	}
+	#store last block
+	tmpblck <- ifelse(current=="head",
+		list(cbl),
+		list(structure(cbl, class="TISEANblock"))
+	)
+	ans <- c(ans, tmpblck)
 	#remove spurious blank lines
 	for(i in which(sapply(ans, function(x) !inherits(x,"TISEANblock")))) {
 		tmp <- ans[[i]][ans[[i]]!=""] #remove empty lines
-		ans[[i]] <- ifelse(length(tmp)>0,tmp,"") #but there must be at least one
+		ans[[i]] <- if(length(tmp)>0) tmp else "" #but there must be at least one
 	}
 	return(ans)
+}
+
+as.matrixList <- function(x) {
+	is <- which(sapply(x, inherits, "TISEANblock"))
+	x[is] <- lapply(x[is],as.matrix)
+	return(x)
 }
 
 #Store object 'x' in file named 'filename'
@@ -160,6 +175,20 @@ as.list.TISEANoutput <- function(x, ...) {
 			if(sep) writeLines("",filename)
 		}, filename=con)
 	close(con)
+}
+
+#Serialize a typical TISEAN list of matrices separated by heads
+.serialize.TISEANmatrixlist <- function(x, filename, ...) {
+	if(!inherits(x,"list"))
+		stop("non-list argument")
+	con <- file(filename, "w")
+	nl <- floor(length(x)/2)
+	for(i in 1:nl) {
+		.serialize(x[[(i-1)*2+1]], con)
+		.serialize(x[[2*i]], con)
+		cat("\n",file=con)
+	}
+	close(con)	
 }
 
 .serialize.character <- function(x, filename, ...) 
