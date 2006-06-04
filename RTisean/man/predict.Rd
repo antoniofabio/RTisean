@@ -3,7 +3,7 @@
 \title{Simple nonlinear prediction}
 \description{Performs locally constant predictions on scalar time series.}
 \usage{
-RT_predict(series, d = -1, m = -1, r = -1, v = -1, s = 1, l = -1, x = 0, c = 1)}
+RT_predict(series, d, m, r, v, s = 1, l, x = 0, c = 1)}
 \arguments{
   \item{series}{a vector or a matrix. }
   \item{d}{delay.}
