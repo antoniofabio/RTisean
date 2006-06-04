@@ -24,6 +24,6 @@ Lyapunov exponents from small data sets, Physica D 65, 117 (1993).}
 \examples{
 dat <- logistic()
 lyapoutput <- lyap_r(dat,s=200)
-plot(lyapoutput [,2],xlab="Iteration",ylab="log(stretching factor)",t="l")
+plot(lyapoutput,xlab="time",ylab="log(stretching factor)",type="l")
 }
 \keyword{ ts}
