@@ -3,7 +3,7 @@
 \title{Cross correlations }
 \description{Computes the cross correlations between two time series.}
 \usage{
-xcor(series, l = -1, x = 0, c = -1, D = 100)
+xcor(series, l, x = 0, c, D = 100)
 }
 \arguments{
 \item{series}{a matrix. }
