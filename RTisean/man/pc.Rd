@@ -3,7 +3,7 @@
 \title{Embed using principal components}
 \description{Writes the projections of a time series onto the largest principal components}
 \usage{
-pc(series, m = -1, d = 1, q = 2, l = -1, x = 0, c = 1)
+pc(series, m, d = 1, q = 2, l, x = 0, c = 1)
 }
 \arguments{
   \item{series}{a vector or a matrix.}
