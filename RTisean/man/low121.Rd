@@ -2,7 +2,7 @@
 \alias{low121}
 \title{Low pass filter }
 \description{Applies a simple low pass filter in the time domain.}
-\usage{low121(series, l = -1, x = 0, c = 1, i = 1)}
+\usage{low121(series, l, x = 0, c = 1, i = 1)}
 \arguments{
 \item{series}{a vector or matrix.}
 \item{l}{number of data to use. }
