@@ -5,7 +5,7 @@
 Makes a Poincare section for time continuous scalar data sets along one
 of the coordinates of the embedding vector.}
 \usage{
-poincare(series, l = -1, x = 0, c = 1, m = 2, d = 1, q = -1, C = 0, a = -1)
+poincare(series, l, x = 0, c = 1, m = 2, d = 1, q, C = 0, a)
 }
 \arguments{
 \item{series}{a vector or a matrix. }
