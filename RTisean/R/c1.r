@@ -1,16 +1,24 @@
-c1 <- function(series,d=-1,m=-1,M=-1,t=-1,n=-1, scale=2, K=100,l,x=0,c=1, pretty=FALSE){
-	if(missing(l))
-		out <- callTISEAN("c1",input=series,d=d, m=m, M=M, t=t, n=n, scale, K=K, x=x,c=c)
-	else
-		out <- callTISEAN("c1",input=series,d=d, m=m, M=M, t=t, n=n, scale, l=l, K=K, x=x,c=c)
-	out <- as.list(out)
-	tmpn <- length(out)/2
-	out[(1:tmpn)*2] <- lapply(out[(1:tmpn)*2], as.matrix)
-	out <- colnamesout(out,1,c("radius","mass"))
+c1 <- function(series,d,m,M,t,n, scale=2, K=100,l,x=0,c=1, pretty=FALSE){
+	args <- list("c1", input=series, K=K, x=x, c=c, "#"=scale)
+	if(!missing(d))
+		args <- c(args, d=d)
+	if(!missing(m))
+		args <- c(args, m=m)
+	if(!missing(M))
+		args <- c(args, M=M)
+	if(!missing(t))
+		args <- c(args, t=t)
+	if(!missing(n))
+		args <- c(args, n=n)
+	if(!missing(l))
+		args <- c(args, l=l)
+
+	out <- do.call(callTISEAN, args)
+	out <- as.matrixList(as.list(out))
+	out <- colnamesout(out[-length(out)],1,c("radius","mass"))
 	if(pretty) {
-		#gsub("[^0-9]*([0-9]+)$","\\1",s) for extracting embedding dimensions from labels
-		nms <- unlist(out[(1:tmpn-1)*2+1])
-		out <- out[(1:tmpn)*2]
+		nms <- unlist(out[(1:length(out)-1)*2+1])
+		out <- out[(1:length(nms))*2]
 		names(out) <- nms
 	}
 	return(out)

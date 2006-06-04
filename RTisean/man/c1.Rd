@@ -3,7 +3,7 @@
 \title{Fixed mass estimation of information dimension}
 \description{Computes curves for the fixed mass computation of the information dimension. }
 \usage{
-c1(series, d = -1, m = -1, M = -1, t = -1, n = -1, scale = 2, K = 100, l, x = 0, c = 1,pretty = FALSE)
+c1(series, d, m, M, t, n, scale = 2, K = 100, l, x = 0, c = 1,pretty = FALSE)
 }
 
 \arguments{
