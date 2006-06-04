@@ -39,13 +39,13 @@ filtereddat <- lazy(dat,m=5,v=0.05,c=2)
 delayedfiltdat <- embed(filtereddat,d=2)
 plot(delayeddat, cex= 0.2, cex.main=0.7, xlab="", ylab="", main = "Embedded noisy Henon attractor filtered with lazy")
 points(delayedfiltdat, cex=0.2, col=2)
-legend(-0.25,-0.5, c("Noisy data","Filtered data"),fill=c(1,2), bty="n",cex=0.7)
+legend(-1,-0.5, c("Noisy data","Filtered data"),fill=c(1,2),bty="n",cex=0.7)
 
 filteredat2 <- nrlazy(dat,m=5,v=0.2)[,1]
 delayedfiltdat2 <- embed(filteredat2,d=2)
 plot(delayeddat, cex= 0.2, cex.main=0.7,xlab="", ylab="", main =  "Embedded noisy Henon attractor filtered with nrlazy")
 points(delayedfiltdat2 , cex=0.2, col=2)
-legend(-0.25,-0.5, c("Noisy data","Filtered data"),fill=c(1,2),bty="n",cex=0.7)
+legend(-1,-0.5, c("Noisy data","Filtered data"),fill=c(1,2),bty="n",cex=0.7)
 }
 }
 \keyword{ ts } 
