@@ -3,7 +3,7 @@
 \title{ Renyi entropy estimate }
 \description{Estimates the Renyi entropy using a partition of the phase space. }
 \usage{
-boxcount(series, l = -1, x = 0, c = -1, d = 1, M = -1, Q = 2, R = -1, r = -1, scale = 20)
+boxcount(series, l, x = 0, c, d = 1, M, Q = 2, R, r, scale = 20)
 }
 \arguments{ \item{series}{ a vector or a matrix. }
   \item{l}{number of data to use. }
@@ -32,9 +32,9 @@ in the second column and the \code{Q}th order differential entropy
 \examples{
 dat <- henon(10000)
 boxout<- boxcount(dat,d=2)
-plot(boxout$comp1$embdim1[,1],boxout$comp1$embdim1[,2],ylim=c(0,8), t="l",
+plot(boxout[[1]][,1],boxout[[1]][,2],ylim=c(0,8), t="l",
 xlab="Epsilon",ylab="Entropy",main="Renyi Entropy of Henon Data")
-lines(boxout$comp1$embdim2[,1],boxout$comp1$embdim2[,2],t="l",col=2)
+lines(boxout[[2]][,1],boxout[[2]][,2],t="l",col=2)
 legend(1.5,7, c("Embedding dimension 1", "Embedding dimension 2"),fill=c(1,2), bty="n")
 }
 \keyword{ts} 
