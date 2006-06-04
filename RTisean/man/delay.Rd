@@ -3,7 +3,7 @@
 \title{Embed using delay coordinates}
 \description{Calculates delay coordinates of a time series.}
 \usage{
-RT_delay(series, d = 1, m = 2, l = -1, x = 0, c = 1)
+RT_delay(series, d = 1, m = 2, l, x = 0, c = 1)
 }
 \arguments{
 \item{series}{a vector or a matrix.}

@@ -3,7 +3,7 @@
 \title{Largest Lyapunov exponent }
 \description{Estimates the largest Lyapunov exponent of a given scalar data set.}
 \usage{
-lyap_r(series, l = -1, x = 0, c = 1, m = 2, d = 1, t = 0, r = -1, s = 50)
+lyap_r(series, l, x = 0, c = 1, m = 2, d = 1, t = 0, r, s = 50)
 }
 \arguments{
   \item{series}{a vector or a matrix.}
