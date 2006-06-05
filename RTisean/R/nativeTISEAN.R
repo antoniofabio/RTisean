@@ -38,7 +38,9 @@ helpTISEAN <- function(routine) {
 #suffixes: optional char vector of suffixes for each output file produced by 'routinename'
 #noout: if true, the routine output is explicitely redirected to a file
 #parobjects: optional named list of further objects to be passed as input files parameters
-callTISEAN <- function(routinename, input, ..., suffixes=NULL, noout=FALSE, parobjects=NULL) {
+#remove.extras: optionally remove extra files
+callTISEAN <- function(routinename, input, ..., suffixes=NULL, noout=FALSE, parobjects=NULL, 
+	remove.extras=FALSE) {
 	opts <- .listToOpts(list(...))
 	if(!getOption("verbose"))
 		opts <- paste(opts, "-V0")
@@ -70,8 +72,14 @@ callTISEAN <- function(routinename, input, ..., suffixes=NULL, noout=FALSE, paro
 	else
 		ans <- TISEANoutput(tout)
 	file.remove(tin,paste(tout,suffixes))
-	if(!is.null(parobjects))
-		lapply(parfilenames, file.remove)
+	if(!is.null(parobjects)) {
+		file.remove(unlist(parfilenames))
+		lapply(parfilenames, function(x) {
+				file.remove(x)
+				if(remove.extras)
+					file.remove(dir(pattern=paste(x,"*",sep="")))
+			})
+	}
 	return(ans)
 }
 
