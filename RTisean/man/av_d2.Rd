@@ -6,7 +6,7 @@ Takes the output of either \code{\link{d2}} or \code{\link{c1}}
 and smoothes it by arithmetically averaging over a given interval.
 }
 \usage{
-av_d2(lst, m = 1, M = -1, a = 1, E = FALSE)
+av_d2(lst, m = 1, M, a = 1, E = FALSE)
 }
 \arguments{
   \item{lst}{The output of \code{\link{d2}}, \code{\link{c1}}.}

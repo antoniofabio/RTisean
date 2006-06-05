@@ -4,7 +4,7 @@
 \description{Embeds periodic orbits, produced as output of \code{upo}, 
  using delay coordinates.}
 \usage{
-upoembed(data, d = -1, m = 2, p = 1, l = -1, x = 0, c = 1)
+upoembed(data, d, m = 2, p = 1, l, x = 0, c = 1)
 }
 \arguments{
   \item{data}{the output containing the locations of periodic orbits as it
@@ -20,9 +20,11 @@ upoembed(data, d = -1, m = 2, p = 1, l = -1, x = 0, c = 1)
 \note{This actually gives erroneous results}
 \seealso{ \code{\link{upo}} }
 \examples{
+\dontrun{
 dat <- henon(1000)
 upoout <- upo(dat,m=2, v=0.1, n=70, p=6)
 upoemb <- upoembed(upoout,d=1)
+}
 }
 \keyword{ts}
 \keyword{internal}

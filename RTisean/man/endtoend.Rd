@@ -5,7 +5,7 @@
 Determines the effect of an end-to-end mismatch on the autocorrelation structure
 for various sub-sequence lengths.}
 \usage{
-endtoend(series, l = -1, x = 0, m = -1, c = 1)
+endtoend(series, l, x = 0, m, c = 1)
 }
 \arguments{
   \item{series}{a vector or a matrix. }

@@ -4,7 +4,7 @@
 \description{Estimates the correlation sum, the correlation dimension and the correlation
 entropy of a given, possibly multivariate, time series.}
 \usage{
-d2(series, l = -1, x = 0, d = 1, M = -1, c = -1, t = 0, R = -1, r = -1, scale = 100, N = 1000, E = FALSE)
+d2(series, l, x = 0, d = 1, M, c, t = 0, R, r, scale = 100, N = 1000, E = FALSE)
 }
 \arguments{
   \item{series}{a vector or matrix.}

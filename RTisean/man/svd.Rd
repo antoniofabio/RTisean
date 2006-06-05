@@ -3,7 +3,7 @@
 \title{SVD}
 \description{Performs a global SVD. }
 \usage{
-RT_svd(series,l=-1,x=0,c=1,m=2,d=1,q=-1)
+RT_svd(series,l,x=0,c=1,m=2,d=1,q)
 }
 \arguments{
   \item{series}{a vector or a matrix.}

@@ -5,7 +5,7 @@
 A Savitzky-Golay filter to either clean the data from high frequency noise or to get
  a better estimate of its derivative of a chosen order.}
 \usage{
-sav_gol(series, l, x = 0, c, m, n = c(2, 2), p = 2, D = 0)
+sav_gol(series, l, x = 0, c, m, n = "2,2", p = 2, D = 0)
 }
 \arguments{
   \item{series}{a vector or a matrix.}

@@ -20,27 +20,3 @@ boxcount <- function(series,l,x=0,c,d=1,M,Q=2.0,R,r,scale=20){
 	names(ans) <- nms
 	return(ans)
 }
-
-tmptrash <- function(){
-	out <- colnamesout(out,0,c("epsilon","entropy","diff. entropy"))
-
-	outlst <- list()
-
-	if(length(M)==1)
-		M <- c(1,10)
-	if (M[1]==1)  {
-		outlst[[paste("comp",1,sep="")]] <- list()   
-			for (j in 1:M[2]) 
-				outlst[[paste("comp",1,sep="")]][[paste("embdim",j,sep="")]] <- out[[j]]
-	} else {
-		for (i in 1:M[1]){
-			cnt <- 1 
-			outlst[[paste("comp",i,sep="")]] <- list()
-			for (j in seq(i,length(out),by=(M[2]-1))) {
-				outlst[[paste("comp",i,sep="")]][[paste("embdim",cnt,sep="")]] <- out[[j]]
-				cnt <- cnt+1
-			}
-		}
-	}
-	out <- outlst
-}

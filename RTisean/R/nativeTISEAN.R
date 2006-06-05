@@ -216,7 +216,7 @@ as.matrixList <- function(x) {
 .serialize.character <- function(x, filename, ...) 
 	write(x, filename)
 
-.serialize.matrix <- function(x, filename)
+.serialize.matrix <- function(x, filename, ...)
 	write(t(x), filename, ncolumns=ncol(x))
 
 .serialize.TISEANoutput <- function(x, filename, ...)
