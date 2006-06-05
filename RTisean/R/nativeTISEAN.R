@@ -42,7 +42,7 @@ helpTISEAN <- function(routine) {
 callTISEAN <- function(routinename, input, ..., suffixes=NULL, noout=FALSE, parobjects=NULL, 
 	remove.extras=FALSE) {
 	opts <- .listToOpts(list(...))
-	if(!getOption("verbose"))
+#	if(!getOption("verbose"))
 		opts <- paste(opts, "-V0")
 	if(!missing(input))
 		.serialize(input, tin <- .getTempFName())
@@ -60,11 +60,12 @@ callTISEAN <- function(routinename, input, ..., suffixes=NULL, noout=FALSE, paro
 			opts <- paste(opts, " -", nm, parfilenames[[nm]],sep="")
 		}
 	}
-	if(!noout)
-		cmd <- paste(routinename," ",tin, " ",opts, " -o",tout,sep="")
-	else
-		cmd <- paste(routinename," ",tin, " ",opts, " > ",tout,sep="")
-	try(system(cmd, intern = FALSE))
+	cmd <- paste(routinename," ",tin, " ",opts,sep="")
+	if(!noout) {
+		cmd <-  paste(cmd, " -o",tout, sep="")
+		try(system(cmd, intern = FALSE))
+	}	else
+		write(system(cmd, intern = TRUE), file = tout)
 	ans <- list()
 	if(!is.null(suffixes))
 		for(sf in suffixes)
