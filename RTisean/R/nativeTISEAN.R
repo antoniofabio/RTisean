@@ -25,7 +25,7 @@ helpTISEAN <- function(routine) {
 	else if(rfile %in% dir(file.path(.TISEANdocs, "docs_f")))
 		rfile <- file.path(.TISEANdocs,"docs_f",rfile)
 	else 
-		stop("can't find ",routine, "help")
+		stop("can't find ",routine, " help")
 	browseURL(rfile)
 }
 
