@@ -37,7 +37,8 @@ helpTISEAN <- function(routine) {
 #...: named list of routine options (excluding filenames)
 #suffixes: optional char vector of suffixes for each output file produced by 'routinename'
 #noout: if true, the routine output is explicitely redirected to a file
-callTISEAN <- function(routinename, input, ..., suffixes=NULL, noout=FALSE) {
+#parobjects: optional named list of further objects to be passed as input files parameters
+callTISEAN <- function(routinename, input, ..., suffixes=NULL, noout=FALSE, parobjects=NULL) {
 	opts <- .listToOpts(list(...))
 	if(!getOption("verbose"))
 		opts <- paste(opts, "-V0")
@@ -49,6 +50,14 @@ callTISEAN <- function(routinename, input, ..., suffixes=NULL, noout=FALSE) {
 	routinename <- paste(routinename, ifelse(.Platform$OS.type=="windows",".exe",""),sep="")
 	if(exists(".TISEANpath"))
 		routinename <- file.path(.TISEANpath, routinename)
+	if(!is.null(parobjects)) { #add further command line options
+		nms <- names(parobjects)
+		parfilenames <- list()
+		for(nm in nms) {
+			.serialize(parobjects[[nm]], parfilenames[[nm]] <- .getTempFName())
+			opts <- paste(opts, " -", nm, parfilenames[[nm]],sep="")
+		}
+	}
 	if(!noout)
 		cmd <- paste(routinename," ",tin, " ",opts, " -o",tout,sep="")
 	else
@@ -61,6 +70,8 @@ callTISEAN <- function(routinename, input, ..., suffixes=NULL, noout=FALSE) {
 	else
 		ans <- TISEANoutput(tout)
 	file.remove(tin,paste(tout,suffixes))
+	if(!is.null(parobjects))
+		lapply(parfilenames, file.remove)
 	return(ans)
 }
 
