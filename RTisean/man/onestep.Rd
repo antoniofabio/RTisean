@@ -3,7 +3,7 @@
 \title{Local linear ansatz}
 \description{Estimates the average one step prediction error of for a local linear ansatz fit.}
 \usage{
-onestep(series, l = -1, x = 0, c = -1, m = 2, d = 1, n = -1, k = 30, r = -1, f = 1.2, s = 1, C = -1)
+onestep(series, l, x = 0, c, m = 2, d = 1, n, k = 30, r, f = 1.2, s = 1, C)
 }
 \arguments{
   \item{series}{a vector or a matrix. }
@@ -23,10 +23,10 @@ onestep(series, l = -1, x = 0, c = -1, m = 2, d = 1, n = -1, k = 30, r = -1, f =
 devided by the standard deviation of the data.}
 \examples{
 library(tseriesChaos)
-dat<-rossler.ts
-errors=NULL
-  for(i in 1:100)
-  errors[i]=onestep(dat,s=i)
+dat <- rossler.ts
+errors <- NULL
+for(i in 1:100)
+	errors[i] <- onestep(dat,s=i)
 
 plot(errors,t="l",xlab="Forecasted steps", ylab="Relative error",main="Relative forecast error for a local linear fit")  
 }

@@ -36,8 +36,8 @@ helpTISEAN <- function(routine) {
 #input: input object, to be serialized before passed to the routine
 #...: named list of routine options (excluding filenames)
 #suffixes: optional char vector of suffixes for each output file produced by 'routinename'
-#FIXME: add case with NO output
-callTISEAN <- function(routinename, input, ..., suffixes=NULL) {
+#noout: if true, the routine output is explicitely redirected to a file
+callTISEAN <- function(routinename, input, ..., suffixes=NULL, noout=FALSE) {
 	opts <- .listToOpts(list(...))
 	if(!getOption("verbose"))
 		opts <- paste(opts, "-V0")
@@ -49,7 +49,10 @@ callTISEAN <- function(routinename, input, ..., suffixes=NULL) {
 	routinename <- paste(routinename, ifelse(.Platform$OS.type=="windows",".exe",""),sep="")
 	if(exists(".TISEANpath"))
 		routinename <- file.path(.TISEANpath, routinename)
-	cmd <- paste(routinename," ",tin, " ",opts, " -o",tout,sep="")
+	if(!noout)
+		cmd <- paste(routinename," ",tin, " ",opts, " -o",tout,sep="")
+	else
+		cmd <- paste(routinename," ",tin, " ",opts, " > ",tout,sep="")
 	try(system(cmd, intern = FALSE))
 	ans <- list()
 	if(!is.null(suffixes))
