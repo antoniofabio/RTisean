@@ -1,9 +1,9 @@
 endtoend <- function(series,l,x=0,m,c=1){
 	args <- list(routinename="endtoend", input=series, x=x, c=c)
 	if(!missing(l))
-		args <- c(args, list(l=l))
+		args <- c(args, l=l)
 	if(!missing(m))
-		args <- c(args, list(m=m))
+		args <- c(args, m=m)
 
 	out <- as.list(do.call(callTISEAN,args))
 	nl <- length(out)/2
@@ -12,14 +12,16 @@ endtoend <- function(series,l,x=0,m,c=1){
 	ans <- list()
 	headRegExp <- "length:(.*) offset:(.*) lost:(.*) %"
 	for(i in 1:length(out)) {
-		ans[[i]] <- list()
+		ans[[i]] <- numeric()
 		bl <- out[[i]]
-		ans[[i]]$length <- as.numeric(gsub(headRegExp, "\\1", bl[1]))
-		ans[[i]]$offset <- as.numeric(gsub(headRegExp, "\\2", bl[1]))
-		ans[[i]]$lost <- as.numeric(gsub(headRegExp, "\\3", bl[1]))
-		ans[[i]]$jump <- as.numeric(gsub("jump: *([0-9\.]*) %", "\\1", bl[2]))
-		ans[[i]]$slip <- as.numeric(gsub("slip: *([0-9\.]*) %", "\\1", bl[3]))
-		ans[[i]]$weighted <- as.numeric(gsub("weighted: *([0-9\.]*) %", "\\1", bl[4]))
+		ans[[i]] <- c(
+			length = as.numeric(gsub(headRegExp, "\\1", bl[1])),
+			offset = as.numeric(gsub(headRegExp, "\\2", bl[1])),
+			lost = as.numeric(gsub(headRegExp, "\\3", bl[1])),
+			jump = as.numeric(gsub("jump: *([0-9\.]*) %", "\\1", bl[2])),
+			slip = as.numeric(gsub("slip: *([0-9\.]*) %", "\\1", bl[3])),
+			weighted = as.numeric(gsub("weighted: *([0-9\.]*) %", "\\1", bl[4]))
+		)
 	}
 	return(ans)
 }

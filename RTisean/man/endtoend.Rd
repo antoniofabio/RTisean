@@ -17,7 +17,7 @@ endtoend(series, l, x = 0, m, c = 1)
 \details{The sub-sequence length is decreased, only considering lengths 
 which can be factorized with factors 2, 3 and 5. In the multivariate case, 
 the mismatches is computed for each channel seperately and then averaged.}
-\value{A list of as many lists as the number of sub-sequences considered,
+\value{A list of as many named vectors as the number of sub-sequences considered,
 each composed by:
 \item{length}{The length of the sub-sequence.}
 \item{offset}{The optimal offset.}
