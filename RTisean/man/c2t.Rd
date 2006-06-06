@@ -22,7 +22,7 @@ corsum <- d2(dat)
 corsum <- corsum$.c2
 takensest <- c2t(corsum)
 
-plot(takensest[[1]],t="l",col=2,xlab="Epsilon",
+plot(takensest[[1]][,c(1,3)],t="l",col=2,xlab="Epsilon",
 ylab="Takens' Estimator",log="x", main="Maximum Likelihood Estimator Plot, embedding dims=(1,...,10)")
 for (a in seq(1,10,1)) 
 	lines(takensest[[a]],col=2)
