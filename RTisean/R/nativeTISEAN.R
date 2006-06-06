@@ -1,8 +1,43 @@
-setTISEANpath <- function(path, GUI=interactive()) {
-	if(missing(path) && GUI && require(tcltk))
-		path <- as.character(tkchooseDirectory(title="Please select TISEAN executables directory"))
+#binaries list:
+.binlist <- c('addnoise', 'd2', 'lyap_k', 'polynomp', 'spectrum','ar-model', 'delay', 'lyap_r', 'polypar', 'spikeauto', 'ar-run', 'endtoend', 'lyap_spec', 'predict', 'spikespec','autocor', 'events', 'makenoise', 'project', 'stp', 'av-d2', 'extrema', 'mem_spec', 'randomize_auto_exp_random', 'surrogates', 'boxcount', 'false_nearest', 'mutual', 'randomize_autop_exp_random', 'svd', 'c1', 'fsle', 'notch', 'randomize_spikeauto_exp_random', 'timerev', 'c2d', 'ghkss', 'nrlazy', 'randomize_spikespec_exp_event', 'upo', 'c2g', 'henon', 'nstat_z', 'randomize_uneven_exp_random', 'upoembed', 'c2naive', 'histogram', 'nstep', 'rbf', 'wiener1', 'c2t', 'ikeda', 'onestep', 'recurr', 'wiener2', 'choose', 'intervals', 'pc', 'resample', 'xc2', 'cluster', 'lazy', 'poincare', 'rescale', 'xcor', 'compare', 'll-ar', 'polyback', 'rms', 'xzero', 'corr', 'low121', 'polynom', 'sav_gol', 'zeroth')
+
+#Checks whenever the TISEAN path is set. If not, a path is interactively asked
+.loadPaths <- function() {
+	settingsFile <- ".RTiseanSettings"
+	usrdir <- Sys.getenv("HOME")
+	settingsPath <- file.path(usrdir, settingsFile)
+	if(settingsFile %in% dir(usrdir, all=TRUE)) { #file found
+		path <- gsub("(.*) *$","\\1",readLines(settingsPath)[1])
+		.checkPath(path)
+		assign(".TISEANpath",path,env=.GlobalEnv)
+		return()
+	}
+	path <- setTISEANpath()
 	assign(".TISEANpath",path,env=.GlobalEnv)
-	#FIXME: write on disk
+}
+
+.checkPath <- function(path) {
+		if(.Platform$OS.type=="windows")
+			binlist <- paste(.binlist,".exe",sep="")
+		else
+			binlist <- .binlist
+		count <- sum(binlist %in% dir(path))
+		if(count==0)
+			stop("no TISEAN executables found in that directory. Please set a proper TISEAN executables path using 'setTISEANpath'")	
+		return()
+}
+
+setTISEANpath <- function(path, GUI=interactive()) {
+	if(interactive() && missing(path)) {
+		if(GUI && require(tcltk))
+			path <- as.character(tkchooseDirectory(title="Please select TISEAN executables directory"))
+		else
+			path <- readline("TISEAN executables directory: ")
+		.checkPath(path)
+	}
+	settingsPath <- file.path(Sys.getenv("HOME"), ".RTiseanSettings")
+	writeLines(path, settingsPath)
+	return(path)
 }
 
 setTISEANdocs <- function(path, GUI=interactive()) {
@@ -41,6 +76,10 @@ helpTISEAN <- function(routine) {
 #remove.extras: optionally remove extra files
 callTISEAN <- function(routinename, input, ..., suffixes=NULL, noout=FALSE, parobjects=NULL, 
 	remove.extras=FALSE) {
+	routinename <- paste(routinename, ifelse(.Platform$OS.type=="windows",".exe",""),sep="")
+	if(!exists(".TISEANpath"))
+		.loadPaths()
+	routinename <- file.path(.TISEANpath, routinename)
 	opts <- .listToOpts(list(...))
 #	if(!getOption("verbose"))
 		opts <- paste(opts, "-V0")
@@ -49,9 +88,7 @@ callTISEAN <- function(routinename, input, ..., suffixes=NULL, noout=FALSE, paro
 	else
 		tin <- ""
 	tout <- .getTempFName()
-	routinename <- paste(routinename, ifelse(.Platform$OS.type=="windows",".exe",""),sep="")
-	if(exists(".TISEANpath"))
-		routinename <- file.path(.TISEANpath, routinename)
+	
 	if(!is.null(parobjects)) { #add further command line options
 		nms <- names(parobjects)
 		parfilenames <- list()
