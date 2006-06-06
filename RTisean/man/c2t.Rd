@@ -17,6 +17,8 @@ c2t(lst)
 }
 \seealso{  \code{\link{c2d}}, \code{\link{c2g}} }
 \examples{
+\dontrun{
+
 dat <- henon(l=10000,x=1000)
 corsum <- d2(dat)
 corsum <- corsum$.c2
@@ -26,5 +28,7 @@ plot(takensest[[1]][,c(1,3)],t="l",col=2,xlab="Epsilon",
 ylab="Takens' Estimator",log="x", main="Maximum Likelihood Estimator Plot, embedding dims=(1,...,10)")
 for (a in seq(1,10,1)) 
 	lines(takensest[[a]],col=2)
+
+}
 }
 \keyword{ ts }

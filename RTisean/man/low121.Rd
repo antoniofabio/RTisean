@@ -16,11 +16,15 @@ Applies a simple low pass filter:
 }
 \value{A vector consisting of the filtered time series.}
 \examples{
+\dontrun{
+
 numdata <- 500
 dat <- cos(1:numdata/25)+rnorm(numdata,0,0.1)
 plot(dat,xlab="Time",t="l",ylab="Cos Data",ylim=c(-1.7,1.2))
 filteredat <- low121(dat,i=10)
 points(filteredat,col=2,t="l",lwd=2)
 legend(300,-1.3, c("Noisy Data","Filtered Data"),fill=c(1,2), bty="n")
+
+}
 }
 \keyword{ts}

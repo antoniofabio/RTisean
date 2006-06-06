@@ -41,11 +41,14 @@ A list composed by:
 }
 
 \examples{
+\dontrun{
+
 dat<-sin(1:10000)+rnorm(10000)/5
 rbfout<-rbf(dat,L=100,n=9900)
 pred<-rbfout$pred
 plot(dat[9901:10000],t="l",xlab="Time",ylab="Sin data")
 lines(pred,col=2)
+
+}
 }
 \keyword{ ts } 
-

@@ -25,11 +25,15 @@ Coping With Chaos, Wiley, New York (1994)
  }
 \seealso{\code{\link{ghkss}} }
 \examples{
+\dontrun{
+
 x <- 1:500
 y <- cos(x/100)^2 - cos(x/200)+ rnorm(500)/10
 filteredy <- project(y,m=7,q=2,k=10,r=1)
 plot(x, y, t="l", xlab="Time", ylab="Time series", main="Projective nonlinear noise reduction")
 lines(x, filteredy[,1], col=2,lwd=1.5)
 legend(350,0, c("Noisy data","Filtered data"),fill=c(1,2), bty="n")
+
+}
 }
 \keyword{ ts}

@@ -27,10 +27,14 @@ and the relative forecast error in the second column. Relative means that the fo
 by the standard deviation of the second (the one which is forecasted) data set. 
 }
 \examples{
+\dontrun{
+
 dat <- as.vector(sunspot.month)
 dat<- cbind(dat, dat + 10*rnorm(2988))
 xzeroo <- xzero(dat,s=100)
 plot(xzeroo,t="l",xlab="Time steps",ylab="Relative Error",
 main="Cross prediction accuracy of a zeroth order model")
+
+}
 }
 \keyword{ ts }

@@ -25,6 +25,8 @@ ghkss(series, l, x = 0, c = 1, m = 5, d = 1, q = 3, k = 30, r, i = 1, two = FALS
  reduction methods for chaotic data, CHAOS 3, 127 (1993).}
 \seealso{  \code{\link{project}} }
 \examples{
+\dontrun{
+
 #FIXME: find better example
 dat <- logistic(iter=10000,r=3.8, noisesd=0.01)
 filteredat <- ghkss(dat)[[1]]
@@ -33,5 +35,7 @@ delayed <- embed(dat,d=2)
 plot(delayed,cex=0.8,xlab="x(t)",ylab="x(t+1)",main="Delayed Logistic Chaotic Attractor",pch='.')
 points(delayedfiltered,col=2,cex=0.8,pch='.')
 legend(0.5,0.4, c("Noisy data","Filtered data"),fill=c(1,2), bty="n",cex=0.8)
+
+}
 }
 \keyword{ts} 

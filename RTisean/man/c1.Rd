@@ -29,7 +29,11 @@ the necessary radius in the first column and the mass in the second column.
 }
 \seealso{ \code{\link{d2}} }
 \examples{
+\dontrun{
+
 dat <- henon(10000)
 infodim <- c1(dat,d=1,m=2,M=6,t=50,n=500)
+
+}
 }
 \keyword{ts}

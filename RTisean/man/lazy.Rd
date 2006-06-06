@@ -29,6 +29,8 @@ In \code{lazy} only the central component of each vector is corrected. }
 \seealso{\code{\link{ghkss}},\code{\link{project}}}
 
 \examples{
+\dontrun{
+
 par(mfrow=c(1,2))
 
 n <- 5000
@@ -46,6 +48,8 @@ delayedfiltdat2 <- embed(filteredat2,d=2)
 plot(delayeddat, cex= 0.2, cex.main=0.7,xlab="", ylab="", main =  "Embedded noisy Henon attractor filtered with nrlazy")
 points(delayedfiltdat2 , cex=0.2, col=2)
 legend(-1,-0.5, c("Noisy data","Filtered data"),fill=c(1,2),bty="n",cex=0.7)
+
+}
 }
 }
 \keyword{ ts } 

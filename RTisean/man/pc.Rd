@@ -17,8 +17,12 @@ pc(series, m, d = 1, q = 2, l, x = 0, c = 1)
 \value{A matrix containing the projections onto the largest principal components as columns.}
 \seealso{ \code{\link{svd}}, \code{\link{princomp}}, \code{\link{prcomp}} }
 \examples{
+\dontrun{
+
 dat <- henon(100)
 prcomp <- pc(dat, m=1)
 plot(prcomp,t="l",main="Projection on the first component",xlab="Time",ylab="Projected time series")
+
+}
 }
 \keyword{manip}

@@ -30,6 +30,8 @@ of points for which neighbors were found in column 5.
 Stat. Soc. 54, 303 (1991).}
 \seealso{ \code{\link{onestep}}}
 \examples{
+\dontrun{
+
 dat <- logistic(iter=1000,r=3.6) +runif(1000)/10
 ll_aroutput <- ll_ar(dat)
 par(mfrow=c(2,2))
@@ -38,6 +40,8 @@ plot(ll_aroutput[,1],ll_aroutput[,2],xlab="Neighborhood size",ylab="Relative for
 plot(ll_aroutput[,1],ll_aroutput[,3],xlab="Neighborhood size", ylab="Fraction of points with neighbors",t="l" )
 plot(ll_aroutput[,1],ll_aroutput[,4],xlab="Neighborhood size",ylab="Average number of neighbors",t="l")
 plot(ll_aroutput[,1],ll_aroutput[,5],xlab="Neighborhood size",ylab="Variance of points with neighbors",t="l")
+
+}
 }
 \keyword{ models}
 \keyword{ ts}

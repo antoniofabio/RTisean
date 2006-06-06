@@ -32,10 +32,14 @@ the level of accuracy and the most unstable orbit eigenvalue.
 \note{This actually gives erroneous results}
 \examples{
 \dontrun{
+
+\dontrun{
 dat <- henon(1000)
 noise <- rnorm(1000,0,0.1*sd(dat[,2]))
 dat[,2] <- dat[,2]+ noise
 unstperorbit <- upo(dat,m=2, v=0.1, n=70, p=6,pretty=T)
+
+}
 }
 }
 \keyword{ts}

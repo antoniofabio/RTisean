@@ -21,9 +21,13 @@ RT_svd(series,l,x=0,c=1,m=2,d=1,q)
 }
 \seealso{ \code{\link{pc}}} 
 \examples{
+\dontrun{
+
 dat<-henon(100)
 svdout<-RT_svd(dat,q=1)
 plot(svdout$project,t="l",xlab="Time",ylab="Projected Time series")
+
+}
 }
 \keyword{ math }
 \keyword{ manip}

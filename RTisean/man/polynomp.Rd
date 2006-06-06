@@ -22,12 +22,16 @@ A list with components:
   \item{pred }{the forecasted points.}
 }
 \examples{
+\dontrun{
+
 dat<-sin(1:10000)+rnorm(10000)/5
 polynompout<-polynomp(dat[1:9900], p = polypar(), L=100)
 pred<-polynompout$pred
 plot(dat[9901:10000],t="l",xlab="Time",ylab="Sin data",ylim=c(-1.9,max(dat)))
 lines(pred,col=2)
 legend(70,-1.5, c("Noisy Data", "Filtered Data") ,fill=c(1,2), bty="n")
+
+}
 }
 \keyword{ models} 
 \keyword{ ts }

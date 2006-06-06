@@ -30,11 +30,15 @@ in the second column and the \code{Q}th order differential entropy
 \seealso{ \code{\link{d2}}, \code{\link{c1}} }
 \references{ http://www.mpipks-dresden.mpg.de/~tisean/ }
 \examples{
+\dontrun{
+
 dat <- henon(10000)
 boxout<- boxcount(dat,d=2)
 plot(boxout[[1]][,1],boxout[[1]][,2],ylim=c(0,8), t="l",
 xlab="Epsilon",ylab="Entropy",main="Renyi Entropy of Henon Data")
 lines(boxout[[2]][,1],boxout[[2]][,2],t="l",col=2)
 legend(1.5,7, c("Embedding dimension 1", "Embedding dimension 2"),fill=c(1,2), bty="n")
+
+}
 }
 \keyword{ts} 

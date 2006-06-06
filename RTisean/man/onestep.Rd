@@ -22,6 +22,8 @@ onestep(series, l, x = 0, c, m = 2, d = 1, n, k = 30, r, f = 1.2, s = 1, C)
 \value{A scalar corresponding to the relative forecast error, namely the forecast error 
 devided by the standard deviation of the data.}
 \examples{
+\dontrun{
+
 library(tseriesChaos)
 dat <- rossler.ts
 errors <- NULL
@@ -29,6 +31,8 @@ for(i in 1:100)
 	errors[i] <- onestep(dat,s=i)
 
 plot(errors,t="l",xlab="Forecasted steps", ylab="Relative error",main="Relative forecast error for a local linear fit")  
+
+}
 }
 \keyword{ models}
 \keyword{ ts}% 

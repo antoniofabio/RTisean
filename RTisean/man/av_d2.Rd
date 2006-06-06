@@ -21,6 +21,8 @@ each containing the epsilon values in the first column and
 the smoothed correlation sums in the second column.}
 \seealso{ \code{\link{c2d}}, \code{\link{c2g}}, \code{\link{c2t}} .}
 \examples{
+\dontrun{
+
 
 dat <- henon(l=10000,x=1000)
 d2output <- d2(dat)
@@ -31,6 +33,8 @@ ylab=paste("Smoothed", expression(D[2](m,epsilon))),log="x", main="Smoothed
 Correlation Dimension Plot")
   for (a in 2:10) points(smoothed[[a]],t="l",col=2)
 
+
+}
 }
 \keyword{math}
 \keyword{ts}

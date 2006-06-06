@@ -28,8 +28,12 @@ each composed by:
 }
 %\seealso{\code{\link{surrogates}}}
 \examples{
+\dontrun{
+
 dat <- henon(1000)
 mismatch <- endtoend(dat,m=2)
+
+}
 }
 \keyword{ math } 
 \keyword{ ts } 

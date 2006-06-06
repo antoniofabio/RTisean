@@ -17,7 +17,9 @@ and its logarithmic derivative in the third columns.
 \references{J. M. Ghez and S. Vaienti, Integrated wavelets on fractal sets I: 
 The correlation dimension, Nonlinearity 5, 777 (1992).  }
 \seealso{\code{\link{c2d}}, \code{\link{c2t}}}
-\examples{ 
+\examples{
+\dontrun{
+ 
 dat <- henon(10000)
 d2output <- d2(dat)
 corsum <- d2output$.c2
@@ -27,5 +29,7 @@ ylab="Correlation Integral",log="x", main="Correlation Integral Plot, embedding 
 
 for (a in 2:10) 
 	lines(corint[[a]],col=2)
+
+}
 }
 \keyword{ ts }

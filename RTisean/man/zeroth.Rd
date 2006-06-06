@@ -32,8 +32,12 @@ numbers as input, where the first one is the number of components and the second
 and the normalized forecast errors in the following columns for each component of the vector.}
 \seealso{ \code{\link{predict}}, \code{\link{xzero}}. }
 \examples{
+\dontrun{
+
 dat <- henon(1000)
 zerotherr <- zeroth(dat, s = 20)
 plot(zerotherr, t="l", xlab= "Steps", ylab= "Normalized error", main = "Zeroth order ansatz prediction errors")
+
+}
 }
 \keyword{ ts }

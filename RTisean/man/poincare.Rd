@@ -27,11 +27,15 @@ the time between the last two crossings.}
 \references{R. Hegger and H. Kantz, Embedding of sequences of time intervals, Europhys.
 Lett. 38, 267 (1997). }
 \examples{
+\dontrun{
+
 library(tseriesChaos)
 dat <- rossler.ts
 poincsect <- poincare(dat,a=1)
 plot(poincsect,main="Poincare' section of Rossler data", xlab="Data cohordinates at the crossing", 
 ylab="Time between the last two crossings")
+
+}
 }
 \keyword{ math}
 \keyword{ ts}

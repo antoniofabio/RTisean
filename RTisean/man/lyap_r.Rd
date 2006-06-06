@@ -22,8 +22,12 @@ and the logarithm of the stretching factor in the second column.}
 Lyapunov exponents from small data sets, Physica D 65, 117 (1993).}
 \seealso{ \code{\link[tseriesChaos]{lyap_k}}}
 \examples{
+\dontrun{
+
 dat <- logistic()
 lyapoutput <- lyap_r(dat,s=200)
 plot(lyapoutput,xlab="time",ylab="log(stretching factor)",type="l")
+
+}
 }
 \keyword{ ts}

@@ -16,8 +16,12 @@ timerev(series, d = 1, l, x = 0, c = 1)
 A scalar corresponding to the time reversal statistics.
 }
 \examples{
+\dontrun{
+
 dat <- lynx
 trstat <- timerev(dat)
+
+}
 }
 \keyword{math}
 \keyword{ts}
