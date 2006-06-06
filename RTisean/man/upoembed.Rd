@@ -22,12 +22,10 @@ upoembed(data, d, m = 2, p = 1, l, x = 0, c = 1)
 \examples{
 \dontrun{
 
-\dontrun{
 dat <- henon(1000)
 upoout <- upo(dat,m=2, v=0.1, n=70, p=6)
 upoemb <- upoembed(upoout,d=1)
 
-}
 }
 }
 \keyword{ts}

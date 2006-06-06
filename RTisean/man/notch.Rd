@@ -16,7 +16,6 @@
 \examples{
 \dontrun{
 
-\dontrun{
 numdata <- 500      
 dat <- cos(1:numdata/25)+rnorm(numdata,0,0.1)
 plot(dat,xlab="Time",t="l",ylab="Cos Data")
@@ -29,7 +28,6 @@ filteredat <- log(notch(dat,X=0.5,w=1))
 filteredat <- ts(filteredat, start=1821, end=1934)
 points(filteredat ,col=2,t="l")
 
-}
 }
 }
 \keyword{ts}
