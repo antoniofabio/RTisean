@@ -1,0 +1,9 @@
+INSTALLING AND USING RTisean, version 3.0
+
+A. The easy way
+1. Download TISEAN binaries from the TISEAN web site, and unpack them to a local folder.
+2. Download and install the RTisean package as an usual R package.
+What will happen? At the first call to a function in the package, you will be asked to specify the local directory where TISEAN binaries resides. Your answer will be stored in a settings file in your home directory, and used in all future functions calls.
+
+B. The tricky way
+If you're planning to not using RTisean in an interactive environment, or to make RTisean usable by users which doesn't have a directory with writing access on the computer, you can configure your R environment to automatically create a '.TISEANpath' character object in the global environment, at startup, pointing to TISEAN executables path. That way, the user will not asked to specify that path, nor nothing is written to user settings files.
