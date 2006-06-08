@@ -1,4 +1,4 @@
-d2 <- function(series,l,x=0,d=1,M,c,t=0,R,r,scale=100,N=1000,E=FALSE){
+d2 <- function(series,l,x=0,d=1,M,c,t=0,R,r,scale=100,N=1000,E=FALSE, pretty=FALSE){
 	concat <- get("c",envir=as.environment("package:base"))
 	args <- list()
 	if(!missing(l))
@@ -21,8 +21,14 @@ d2 <- function(series,l,x=0,d=1,M,c,t=0,R,r,scale=100,N=1000,E=FALSE){
 	out <- lapply(out, as.matrixList)
 
 	out[[1]] <- colnamesout(out[[1]], 1, c("epsilon","integral"))
+	out[[1]][[1]] <- out[[1]][[1]][2]
 	out[[2]] <- colnamesout(out[[2]], 1, c("epsilon","dimension"))
+	out[[2]][[1]] <- out[[2]][[1]][2]
 	out[[3]] <- colnamesout(out[[3]], 1, c("epsilon","entropy"))
+	out[[3]][[1]] <- out[[3]][[1]][2]
+
+	if(pretty)
+		out <- lapply(out, .cleanList)
 
 	return(out)
 }

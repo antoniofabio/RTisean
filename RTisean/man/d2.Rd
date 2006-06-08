@@ -4,7 +4,7 @@
 \description{Estimates the correlation sum, the correlation dimension and the correlation
 entropy of a given, possibly multivariate, time series.}
 \usage{
-d2(series, l, x = 0, d = 1, M, c, t = 0, R, r, scale = 100, N = 1000, E = FALSE)
+d2(series, l, x = 0, d = 1, M, c, t = 0, R, r, scale = 100, N = 1000, E = FALSE, pretty=FALSE)
 }
 \arguments{
   \item{series}{a vector or matrix.}
@@ -19,6 +19,7 @@ d2(series, l, x = 0, d = 1, M, c, t = 0, R, r, scale = 100, N = 1000, E = FALSE)
   \item{scale}{number of epsilon values. }
   \item{N}{maximal number of pairs to be used. }
   \item{E}{use data that is normalized to [0,1] for all components.}
+	\item{pretty}{clean ouput for pretty printing}
 }
 \details{The parameter \code{pretty} must be set to \code{FALSE} if the output of \code{d2} is
 meant to be post-processed by \code{av_d2}, \code{c2d},\code{cdg} or \code{c2t}.

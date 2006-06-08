@@ -265,3 +265,11 @@ as.matrixList <- function(x) {
 
 .serialize.character <- function(x, filename, ...)
 	writeLines(x, filename)
+
+.cleanList <- function(x, pattern="^#dim= (.*)$", substitute="dim\\1") {
+	n <- floor(length(x)/2)
+	nms <- unlist(x[(1:n-1)*2+1])
+	x <- x[(1:n)*2]
+	names(x) <- gsub(pattern, substitute, nms)
+	return(x)
+}
