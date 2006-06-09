@@ -42,8 +42,8 @@ according to the list item:
 \dontrun{
 
 dat <- henon(10000)
-d2output <- d2(dat)
-cordim <- d2output$.d2[(1:10)*2]
+d2output <- d2(dat, pretty=TRUE)
+cordim <- d2output$.d2
 plot(cordim[[1]],t="l",ylim=c(0,7),col=2,xlab="Epsilon",
 ylab=expression(D[2](m,epsilon)),log="x", main="Correlation Dimension Plot")
 for (a in 2:10) 

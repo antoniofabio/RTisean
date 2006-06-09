@@ -6,6 +6,6 @@ c2t <- function(lst){
 	out <- as.list(callTISEAN("c2t",input=lst))
 	out <- as.matrixList(out)
 	out <- colnamesout(out,1,c("epsilon","log.der."))
-	out <- .cleanList(out, "^#m= +(.*)$")
+	out <- .cleanList(out)
 	return(out)
 }
