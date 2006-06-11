@@ -30,7 +30,8 @@ setTISEANpath <- function(path, GUI=interactive()) {
 			path <- as.character(tkchooseDirectory(title="Please select TISEAN executables directory"))
 		else
 			path <- readline("TISEAN executables directory: ")
-		.checkPath(paste(path,collapse=""))
+		path <- paste(path,collapse="")
+		.checkPath(path)
 	}
 	settingsPath <- file.path(Sys.getenv("HOME"), ".RTiseanSettings")
 	writeLines(path, settingsPath)
