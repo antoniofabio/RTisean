@@ -4,8 +4,8 @@
 \title{Wiener filter}
 \description{Tools for producing the periodogram from a time series and generating a filtered sequence.}
 \usage{
-wiener1(series, f = -1, w = -1, l = -1, x = 0, c = 1)
-wiener2(series, f = -1, w = -1, o = -1, l = -1, x = 0, c = 1)
+wiener1(series, f, w, l, x = 0, c = 1)
+wiener2(series, f, w, o, l, x = 0, c = 1)
 }
 \arguments{
   \item{series}{a vector or a matrix. }
@@ -23,9 +23,12 @@ wiener2(series, f = -1, w = -1, o = -1, l = -1, x = 0, c = 1)
 numdata <- 500 
 dat <- cos(1:numdata/25)+rnorm(numdata,0,0.1)
 periodogramat<- wiener1(dat)
+#edit periodogram as desired.
+#	clean all but the 4th period:
+periodogramat[-4,] <- cbind(periodogramat[-4,1],0) 
 filteredat <- wiener2(dat, o=periodogramat)
 plot(dat,xlab="Time",t="l",ylab="Cos Data",ylim=c(-1.5,1.2))
-points(filteredat,col=2,t="l",lwd=2)
+lines(filteredat,col=2,lwd=2)
 legend(300,-1.2, c("Noisy Data","Filtered Data") ,fill=c(1,2), bty="n")
 
 }

@@ -1,3 +1,6 @@
+3.0-2
+- activated wiener1 and wiener2 functions, upgraded doc
+
 3.0-1:
 - fixed output in d2, c2d, c2g, c2t, upgraded docs
 

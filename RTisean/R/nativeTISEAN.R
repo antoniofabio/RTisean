@@ -134,7 +134,8 @@ callTISEAN <- function(routinename, input, ..., suffixes=NULL, noout=FALSE, paro
 
 #Call the selected routine without any arguments translation. 
 #	Output has to be extracted manually from intermediate files
-callNativeTISEAN <- function(routine, opts) {
+callNativeTISEAN <- function(routinename, opts) {
+	routinename <- paste(routinename, ifelse(.Platform$OS.type=="windows",".exe",""),sep="")
 	if(exists(".TISEANpath"))
 		routinename <- file.path(.TISEANpath, routinename)
 	cmd <- paste(routinename," ",opts, sep="")
