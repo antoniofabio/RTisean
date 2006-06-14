@@ -27,10 +27,9 @@
 setTISEANpath <- function(path, GUI=interactive()) {
 	if(interactive() && missing(path)) {
 		if(GUI && require(tcltk))
-			path <- as.character(tkchooseDirectory(title="Please select TISEAN executables directory"))
+			path <- tclvalue(tkchooseDirectory(title="Please select TISEAN executables directory"))
 		else
 			path <- readline("TISEAN executables directory: ")
-		path <- paste(path,collapse="")
 		.checkPath(path)
 	}
 	settingsPath <- file.path(Sys.getenv("HOME"), ".RTiseanSettings")
@@ -42,7 +41,6 @@ setTISEANdocs <- function(path, GUI=interactive()) {
 	if(missing(path) && GUI && require(tcltk))
 		path <- as.character(tkchooseDirectory(title="Please select TISEAN executables directory"))
 	assign(".TISEANdocs",path,env=.GlobalEnv)
-	#FIXME: write on disk
 }
 
 helpTISEAN <- function(routine) {
@@ -77,7 +75,7 @@ callTISEAN <- function(routinename, input, ..., suffixes=NULL, noout=FALSE, paro
 	routinename <- paste(routinename, ifelse(.Platform$OS.type=="windows",".exe",""),sep="")
 	if(!exists(".TISEANpath"))
 		.loadPaths()
-	routinename <- file.path(.TISEANpath, routinename)
+	routinename <- paste("\"", file.path(.TISEANpath, routinename),"\"",sep="")
 	opts <- .listToOpts(list(...))
 #	if(!getOption("verbose"))
 		opts <- paste(opts, "-V0")
@@ -134,8 +132,9 @@ callTISEAN <- function(routinename, input, ..., suffixes=NULL, noout=FALSE, paro
 #	Output has to be extracted manually from intermediate files
 callNativeTISEAN <- function(routinename, opts) {
 	routinename <- paste(routinename, ifelse(.Platform$OS.type=="windows",".exe",""),sep="")
-	if(exists(".TISEANpath"))
-		routinename <- file.path(.TISEANpath, routinename)
+	if(!exists(".TISEANpath"))
+		.loadPaths()
+	routinename <- paste("\"", file.path(.TISEANpath, routinename),"\"",sep="")
 	cmd <- paste(routinename," ",opts, sep="")
 	try(system(cmd, intern = FALSE))
 }
@@ -161,6 +160,7 @@ TISEANblock <- function(lns, ...)
 as.matrix.TISEANblock <- function(x, ...) {
 	.serialize(x, tmp <- tempfile())
 	ans <- as.matrix(read.table(tmp,fill=TRUE))
+	rownames(ans) <- NULL
 	file.remove(tmp)
 	ans
 }

@@ -1,4 +1,8 @@
+3.0-3
+- re-added 'surrogates' function, with doc and example
+
 3.0-2
+- fixed bug in calling tisean executable (now holding correctly paths with spaces)
 - activated wiener1 and wiener2 functions, upgraded doc
 
 3.0-1:
