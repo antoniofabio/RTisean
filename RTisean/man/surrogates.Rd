@@ -44,7 +44,7 @@ dat <- logistic(1000)
 surr <- surrogates(dat)
 Z <- cbind(dat,surr)[1:100,]
 colnames(Z) <- c("data","surrogate")
-plot.ts(Z)
+plot.ts(Z,  mar.multi = c(0, 5.1, 1, 2.1 ),main="Logistic model time series")
 }
 
 }
