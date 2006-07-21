@@ -1,3 +1,7 @@
+3.0-5
+- added RTisean-package man page
+- fixed 'Author' field, added 'URL' field in DESCRIPTION
+
 3.0-4
 - fixed package description
 
