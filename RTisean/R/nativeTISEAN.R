@@ -72,10 +72,11 @@ helpTISEAN <- function(routine) {
 #remove.extras: optionally remove extra files
 callTISEAN <- function(routinename, input, ..., suffixes=NULL, noout=FALSE, parobjects=NULL, 
 	remove.extras=FALSE) {
+	oldOpts <- options(scipen=10)
 	routinename <- paste(routinename, ifelse(.Platform$OS.type=="windows",".exe",""),sep="")
 	if(!exists(".TISEANpath"))
 		.loadPaths()
-	routinename <- paste("\"", file.path(.TISEANpath, routinename),"\"",sep="")
+	routinename <- shQuote(file.path(.TISEANpath, routinename))
 	opts <- .listToOpts(list(...))
 #	if(!getOption("verbose"))
 		opts <- paste(opts, "-V0")
@@ -114,6 +115,7 @@ callTISEAN <- function(routinename, input, ..., suffixes=NULL, noout=FALSE, paro
 					file.remove(dir(pattern=paste(x,"*",sep="")))
 			})
 	}
+	options(oldOpts)
 	return(ans)
 }
 
