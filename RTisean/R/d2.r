@@ -5,8 +5,12 @@ d2 <- function(series,l,x=0,d=1,M,c,t=0,R,r,scale=100,N=1000,E=FALSE, pretty=FAL
 		args <- concat(args,list(l=l))
 	if(E)
 		args <- concat(args, list("E"))
-	if(!missing(M))
-		args <- concat(args, list(M=M))
+	if(!missing(M)) {
+		if ((length(M)!=2) || any(M<=0))
+			stop("'M' should be a vector of 2 positive integers")
+	} else
+		M <- concat(1,10)
+	args <- concat(args, list(M=M))
 	if(!missing(R))
 		args <- concat(args, list(R=R))
 	if(!missing(r))

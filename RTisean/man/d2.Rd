@@ -11,7 +11,7 @@ d2(series, l, x = 0, d = 1, M, c, t = 0, R, r, scale = 100, N = 1000, E = FALSE,
   \item{l}{number of data points to be used. }
   \item{x}{number of lines to be ignored.}
   \item{d}{delay for the delay vectors. }
-  \item{M}{number of components, maximal embedding dimension.} 
+  \item{M}{number of components, maximal embedding dimension} 
   \item{c}{columns to be read. }
   \item{t}{theiler window. }
   \item{R}{maximal length scale.  }

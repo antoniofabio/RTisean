@@ -125,8 +125,14 @@ callTISEAN <- function(routinename, input, ..., suffixes=NULL, noout=FALSE, paro
 		return()
 	ans <- ""
 	nms <- names(lst)
-	for(i in 1:length(lst))
-		ans <- paste(ans, " -",nms[i],lst[[i]],sep="")
+	for(i in 1:length(lst)) {
+		if(length( lst[[i]] )==1)
+			ans <- paste(ans, " -",nms[i],lst[[i]],sep="")
+		else {
+			tmp <- paste(lst[[i]], collapse=",")
+			ans <- paste(ans, " -",nms[i], tmp , sep="")
+		}
+	}
 	return(ans)
 }
 

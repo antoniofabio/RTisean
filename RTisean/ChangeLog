@@ -1,3 +1,6 @@
+3.0-6
+- fixed bug in handling 'multivariate' arguments to be passed to TISEAN executables
+
 3.0-5
 - fixed bug when passing arguments to TISEAN in scientific notation
 - added RTisean-package man page
