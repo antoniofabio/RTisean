@@ -1,10 +1,11 @@
-\name{zeroth}
-\alias{zeroth}
+\name{lzo.test}
+\alias{zeroth} %old routine name
+\alias{lzo.test}
 \title{ Modeling data trough a zeroth order ansatz }
 \description{Makes a zeroth order ansatz and estimates the one step prediction errors
  of the model on a multivariate time series.}
 \usage{
-zeroth(series, l, x = 0, m, c, d = 1, n, S = 1, k = 30, r, f = 1.2, s = 1, C)
+lzo.test(series, l, x = 0, m, c, d = 1, n, S = 1, k = 30, r, f = 1.2, s = 1, C)
 }
 \arguments{
   \item{series}{a matrix or a vector.}
@@ -35,7 +36,7 @@ and the normalized forecast errors in the following columns for each component o
 \dontrun{
 
 dat <- henon(1000)
-zerotherr <- zeroth(dat, s = 20)
+zerotherr <- lzo.test(dat, s = 20)
 plot(zerotherr, t="l", xlab= "Steps", ylab= "Normalized error", main = "Zeroth order ansatz prediction errors")
 
 }

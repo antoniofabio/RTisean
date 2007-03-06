@@ -1,9 +1,10 @@
-\name{onestep}
+\name{lfo.test}
 \alias{onestep}
+\alias{lfo.test}
 \title{Local linear ansatz}
 \description{Estimates the average one step prediction error of for a local linear ansatz fit.}
 \usage{
-onestep(series, l, x = 0, c, m = 2, d = 1, n, k = 30, r, f = 1.2, s = 1, C)
+lfo.test(series, l, x = 0, c, m = 2, d = 1, n, k = 30, r, f = 1.2, s = 1, C)
 }
 \arguments{
   \item{series}{a vector or a matrix. }
@@ -28,7 +29,7 @@ library(tseriesChaos)
 dat <- rossler.ts
 errors <- NULL
 for(i in 1:100)
-	errors[i] <- onestep(dat,s=i)
+	errors[i] <- lfo.test(dat,s=i)
 
 plot(errors,t="l",xlab="Forecasted steps", ylab="Relative error",main="Relative forecast error for a local linear fit")  
 

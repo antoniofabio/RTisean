@@ -1,9 +1,10 @@
-\name{RT_svd}
-\alias{RT_svd}
-\title{SVD}
+\name{RT_pca}
+\alias{RT_svd} %old routine name
+\alias{RT_pca}
+\title{PCA}
 \description{Performs a global SVD. }
 \usage{
-RT_svd(series,l,x=0,c=1,m=2,d=1,q)
+RT_pca(series,l,x=0,c=1,m=2,d=1,q)
 }
 \arguments{
   \item{series}{a vector or a matrix.}
@@ -24,7 +25,7 @@ RT_svd(series,l,x=0,c=1,m=2,d=1,q)
 \dontrun{
 
 dat<-henon(100)
-svdout<-RT_svd(dat,q=1)
+svdout<-RT_pca(dat,q=1)
 plot(svdout$project,t="l",xlab="Time",ylab="Projected Time series")
 
 }

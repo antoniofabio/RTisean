@@ -1,5 +1,6 @@
-\name{nstep}
+\name{lfo.run}
 \alias{nstep}
+\alias{lfo.run}
 \title{Modeling data through a local linear ansatz}
 \description{Makes either a local linear ansatz or a zeroth order ansatz 
 for a time series and iterates an artificial trajectory. The initial values for the
@@ -7,7 +8,7 @@ trajectory are the last points of the original time series. Thus it actually
 forecasts the time series.  
 }
 \usage{
-nstep(series, l, x = 0, m, c, d = 1, L = 1000, k = 30, r, f = 1.2, O = FALSE)
+lfo.run(series, l, x = 0, m, c, d = 1, L = 1000, k = 30, r, f = 1.2, O = FALSE)
 }
 \arguments{
   \item{series}{a vector or matrix.}
@@ -31,7 +32,7 @@ model can be constructed (from Kantz, pag. 330).}
 
 par(mfrow=c(2,1))
 dat<-logistic(r=3.6)
-nsteppred<-nstep(dat[1:950])
+nsteppred<-lfo.run(dat[1:950])
 plot(dat[951:1000],t="l",xlab="Time",ylab="x",ylim=c(0.2,0.9),
 main="Local linear model on logistic data")
 lines(nsteppred,col=2)
