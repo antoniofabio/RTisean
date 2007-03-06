@@ -1,6 +1,6 @@
-nstep <- function(series,l,x=0,m,c,d=1,L=1000,k=30,r,f=1.2,O=FALSE){
+lfo.run <- function(series,l,x=0,m,c,d=1,L=1000,k=30,r,f=1.2,O=FALSE){
 	concat <- get("c",envir=as.environment("package:base"))
-	args <- list(routinename="nstep", input=series, x=x,d=d,L=L,k=k,f=f)
+	args <- list(routinename="lfo-run", input=series, x=x,d=d,L=L,k=k,f=f)
 	if(O)
 		args <- concat(args, list("O"))
 	if(!missing(l))
@@ -16,3 +16,5 @@ nstep <- function(series,l,x=0,m,c,d=1,L=1000,k=30,r,f=1.2,O=FALSE){
 	colnames(out) <- "predictions"
 	return(out)
 }
+
+nstep <- lfo.run

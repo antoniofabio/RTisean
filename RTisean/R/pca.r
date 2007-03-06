@@ -1,5 +1,5 @@
-RT_svd <- function(series,l,x=0,c=1,m=2,d=1,q){
-	args <- list(routinename="svd", input=series, x=x, c=c, m=m, d=d)
+RT_pca <- function(series,l,x=0,c=1,m=2,d=1,q){
+	args <- list(routinename="pca", input=series, x=x, c=c, m=m, d=d)
 	if(!missing(l))
 		args <- c(args, l=l)
 	if(!missing(q))
@@ -9,3 +9,5 @@ RT_svd <- function(series,l,x=0,c=1,m=2,d=1,q){
 	ans <- list(eigen=eig, project=as.matrix(out[[2]]))
 	return(ans)
 }
+
+RT_svn <- RT_pca
