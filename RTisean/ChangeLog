@@ -1,3 +1,9 @@
+3.1
+- Upgraded to TISEAN-3.0.0 (some more details follows)
+	- renamed some functions: nstep-> lfo.run; onestep-> lfo.test; zeroth-> lzo.test; RT_svd-> RT_pca
+	- lfo.test can handle multivariate data
+	- RT_pca can handle multivariate data, and has more flexible way of specifing the desired kind of output
+
 3.0-6
 - fixed bug in handling 'multivariate' arguments to be passed to TISEAN executables
 
