@@ -5,7 +5,7 @@
 \description{Makes a zeroth order ansatz and estimates the one step prediction errors
  of the model on a multivariate time series.}
 \usage{
-lzo.test(series, l, x = 0, m, c, d = 1, n, S = 1, k = 30, r, f = 1.2, s = 1, C)
+lzo.test(series, l, x = 0, m=c(1,2), c, d = 1, n, S = 1, k = 30, r, f = 1.2, s = 1, C)
 }
 \arguments{
   \item{series}{a matrix or a vector.}
