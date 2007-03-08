@@ -1,7 +1,7 @@
 3.1
 - Upgraded to TISEAN-3.0.0 (some more details follows)
-	- renamed some functions: nstep-> lfo.run; onestep-> lfo.test; zeroth-> lzo.test; RT_svd-> RT_pca
-	- lfo.test can handle multivariate data
+	- renamed some functions: nstep-> lfo.run; onestep-> lfo.test; zeroth-> lzo.test; ll_ar-> lfo.ar; RT_svd-> RT_pca
+	- lfo.test and lfo.ar can handle multivariate data
 	- RT_pca can handle multivariate data, and has more flexible way of specifing the desired kind of output
 
 3.0-6

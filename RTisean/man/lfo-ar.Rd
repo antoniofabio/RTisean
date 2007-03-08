@@ -1,17 +1,19 @@
-\name{ll_ar}
+\name{lfo.ar}
 \alias{ll_ar}
+\alias{lfo.ar}
+\alias{lfo-ar}
 \title{Modeling data through a local linear ansatz}
 \description{Makes a local linear ansatz and estimates the one step 
 prediction error of the model.}
 \usage{
-ll_ar(series, l, x = 0, c = 1, m = 2, d = 1, i, r, R, f = 1.2, s = 1, C)
+lfo.ar(series, l, x = 0, c = 1, m = c(1,2), d = 1, i, r, R, f = 1.2, s = 1, C)
 }
 \arguments{
   \item{series}{a vector or a matrix. }
   \item{l}{number of points to use.  }
   \item{x}{number of lines to be ignored. }
   \item{c}{column to be read.  }
-  \item{m}{embedding dimension. }
+  \item{m}{no. of components, embedding dimension}
   \item{d}{delay for the embedding. }
   \item{i}{number of points for which the error should be calculated. }
   \item{r}{neighborhood size to start with. }
@@ -33,7 +35,7 @@ Stat. Soc. 54, 303 (1991).}
 \dontrun{
 
 dat <- logistic(iter=1000,r=3.6) +runif(1000)/10
-ll_aroutput <- ll_ar(dat)
+ll_aroutput <- lfo.ar(dat)
 par(mfrow=c(2,2))
 
 plot(ll_aroutput[,1],ll_aroutput[,2],xlab="Neighborhood size",ylab="Relative forecast error",t="l")
