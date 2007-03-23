@@ -1,7 +1,7 @@
 INSTALLING AND USING RTisean, version 3.1
 
 A. The easy way
-1. Download TISEAN-3.0.0 binaries from the TISEAN web site, and unpack them to a local folder.
+1. Download TISEAN-3.0.x binaries from the TISEAN web site, and unpack them to a local folder.
 2. Download and install the RTisean package as an usual R package.
 What will happen? At the first call to a function in the package, you will be asked to specify the local directory where TISEAN binaries resides. Your answer will be stored in a settings file in your home directory, and used in all future functions calls.
 
