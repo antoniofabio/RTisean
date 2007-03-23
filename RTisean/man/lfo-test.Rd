@@ -4,7 +4,7 @@
 \title{Local linear ansatz}
 \description{Estimates the average one step prediction error of for a local linear ansatz fit.}
 \usage{
-lfo.test(series, l, x = 0, c, m = 2, d = 1, n, k = 30, r, f = 1.2, s = 1, C)
+lfo.test(series, l, x = 0, c=1, m = c(1,2), d = 1, n, k = 30, r, f = 1.2, s = 1, C)
 }
 \arguments{
   \item{series}{a vector or a matrix. }

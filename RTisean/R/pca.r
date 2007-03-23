@@ -7,4 +7,4 @@ RT_pca <- function(series,l,x=0,c=1,m=c(1,2),d=1, W=0, q){
 	return(as.matrix(do.call(callTISEAN, args)))
 }
 
-RT_svn <- RT_pca
+RT_svd <- RT_pca

@@ -1,4 +1,4 @@
-lzo.test <- function(series,l,x=0,m,c,d=1,n,S=1,k=30,r,f=1.2,s=1,C){
+lzo.test <- function(series,l,x=0,m=c(1,2),c,d=1,n,S=1,k=30,r,f=1.2,s=1,C){
 	concat <- get("c",envir=as.environment("package:base"))
 	args <- list(routinename="lzo-test", input=series, x=x, d=d, S=S,k=k,f=f,s=s)
 	if(!missing(l))
