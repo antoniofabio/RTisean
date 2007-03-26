@@ -18,10 +18,11 @@ endtoend <- function(series,l,x=0,m,c=1){
 			length = as.numeric(gsub(headRegExp, "\\1", bl[1])),
 			offset = as.numeric(gsub(headRegExp, "\\2", bl[1])),
 			lost = as.numeric(gsub(headRegExp, "\\3", bl[1])),
-			jump = as.numeric(gsub("jump: *([0-9\.]*) %", "\\1", bl[2])),
-			slip = as.numeric(gsub("slip: *([0-9\.]*) %", "\\1", bl[3])),
-			weighted = as.numeric(gsub("weighted: *([0-9\.]*) %", "\\1", bl[4]))
+			jump = as.numeric(gsub("jump: *([0-9.]*) %", "\\1", bl[2])),
+			slip = as.numeric(gsub("slip: *([0-9.]*) %", "\\1", bl[3])),
+			weighted = as.numeric(gsub("weighted: *([0-9.]*) %", "\\1", bl[4]))
 		)
 	}
 	return(ans)
 }
+
