@@ -51,5 +51,5 @@ legend(-1,-0.5, c("Noisy data","Filtered data"),fill=c(1,2),bty="n",cex=0.7)
 
 }
 }
-}
+
 \keyword{ ts } 

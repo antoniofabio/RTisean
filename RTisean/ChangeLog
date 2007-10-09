@@ -1,3 +1,7 @@
+3.0-8
+- fixed DESCRIPTION for passing check in R 2.6.0
+- fixed typo in lazy man page
+
 3.0-7
 - fixed regexp in endtoend.r for passing R CMD check
 - Upgraded to TISEAN-3.0.1 (some more details follows)
