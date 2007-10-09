@@ -1,0 +1,35 @@
+3.0-8
+- fixed DESCRIPTION for passing check in R 2.6.0
+- fixed typo in lazy man page
+
+3.0-7
+- fixed regexp in endtoend.r for passing R CMD check
+- Upgraded to TISEAN-3.0.1 (some more details follows)
+	- renamed some functions: nstep-> lfo.run; onestep-> lfo.test; zeroth-> lzo.test; ll_ar-> lfo.ar; RT_svd-> RT_pca
+	- lfo.test and lfo.ar can handle multivariate data
+	- RT_pca can handle multivariate data, and has more flexible way of
+	specifying the desired kind of output
+
+3.0-6
+- fixed bug in handling 'multivariate' arguments to be passed to TISEAN executables
+
+3.0-5
+- fixed bug when passing arguments to TISEAN in scientific notation
+- added RTisean-package man page
+- fixed 'Author' field, added 'URL' field in DESCRIPTION
+
+3.0-4
+- fixed package description
+
+3.0-3
+- re-added 'surrogates' function, with doc and example
+
+3.0-2
+- fixed bug in calling tisean executable (now holding correctly paths with spaces)
+- activated wiener1 and wiener2 functions, upgraded doc
+
+3.0-1:
+- fixed output in d2, c2d, c2g, c2t, upgraded docs
+
+3.0: 
+- initial release
