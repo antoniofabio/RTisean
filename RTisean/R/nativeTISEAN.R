@@ -105,7 +105,7 @@ callTISEAN <- function(routinename, input, ..., suffixes=NULL, noout=FALSE, paro
       ans[[sf]] <- TISEANoutput(paste(tout,sf,sep=""))
   else
     ans <- TISEANoutput(tout)
-  file.remove(tin,paste(tout,suffixes))
+  file.remove(tin, paste(tout, suffixes, sep=""))
   if(!is.null(parobjects)) {
     file.remove(unlist(parfilenames))
     lapply(parfilenames, function(x) {

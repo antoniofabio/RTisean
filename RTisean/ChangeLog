@@ -1,3 +1,7 @@
+3.0-10   9 feb 2009
+- fixed typo in callTISEAN: some temp files were not removed
+     (fix by C. LeeBarrett)
+
 3.0-9
 - fixed mantainer mail field format in DESCRIPTION
 
