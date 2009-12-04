@@ -15,7 +15,6 @@ av_d2(lst, m = 1, M, a = 1, E = FALSE)
   \item{a}{ smooth over an interval of 2\code{a}+1 points.}
   \item{E}{ show the length scales in rescaled units.}
 }
-\details{}
 \value{A list of as many a matrices as the number of dimensions,
 each containing the epsilon values in the first column and
 the smoothed correlation sums in the second column.}

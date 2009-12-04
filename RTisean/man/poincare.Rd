@@ -18,7 +18,6 @@ poincare(series, l, x = 0, c = 1, m = 2, d = 1, q, C = 0, a)
   \item{C}{direction of the crossing (0: from below, 1: from above). }
   \item{a}{position of the crossing. }
 }
-\details{}
 \value{
 A matrix containing \code{m} columns for each cut. The first \code{m}-1
 columns store the cohordinates of the vector at the crossing, the last one stores
