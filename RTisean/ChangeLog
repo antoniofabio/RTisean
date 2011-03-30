@@ -1,3 +1,6 @@
+3.0-13
+
+
 3.0-12  30 mar 2011
 	- avoid spurious call to 'file.remove' when no temp input file has been created
 	(spotted by Βασίλειος Σιάκουλης)
