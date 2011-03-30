@@ -82,7 +82,7 @@ callTISEAN <- function(routinename, input, ..., suffixes=NULL, noout=FALSE, paro
   if(!missing(input))
     .serialize(input, tin <- .getTempFName())
   else
-    tin <- ""
+    tin <- NA_character_
   tout <- .getTempFName()
 
   if(!is.null(parobjects)) { #add further command line options
@@ -93,7 +93,7 @@ callTISEAN <- function(routinename, input, ..., suffixes=NULL, noout=FALSE, paro
       opts <- paste(opts, " -", nm, parfilenames[[nm]],sep="")
     }
   }
-  cmd <- paste(routinename," ",tin, " ",opts,sep="")
+  cmd <- paste(routinename," ", if(!is.na(tin)) tin else "", " ", opts, sep="")
   if(!noout) {
     cmd <-  paste(cmd, " -o",tout, sep="")
     try(system(cmd, intern = FALSE))
@@ -105,7 +105,9 @@ callTISEAN <- function(routinename, input, ..., suffixes=NULL, noout=FALSE, paro
       ans[[sf]] <- TISEANoutput(paste(tout,sf,sep=""))
   else
     ans <- TISEANoutput(tout)
-  file.remove(tin, paste(tout, suffixes, sep=""))
+  if(!is.na(tin)) {
+    file.remove(tin, paste(tout, suffixes, sep=""))
+  }
   if(!is.null(parobjects)) {
     file.remove(unlist(parfilenames))
     lapply(parfilenames, function(x) {

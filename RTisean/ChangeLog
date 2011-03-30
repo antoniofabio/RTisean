@@ -1,3 +1,7 @@
+3.0-12  30 mar 2011
+	- avoid spurious call to 'file.remove' when no temp input file has been created
+	(spotted by Βασίλειος Σιάκουλης)
+
 3.0-11 	4 dec 2009
 	- removed empty sections from some manpages
 	- fixed typo in lfo.run: a literal 'O' was passed instead of '0' (zero) when 'O=TRUE'
