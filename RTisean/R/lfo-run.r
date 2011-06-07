@@ -6,7 +6,7 @@ lfo.run <- function(series,l,x=0,m,c,d=1,L=1000,k=30,r,f=1.2,O=FALSE){
   if(!missing(l))
     args <- concat(args, l=l)
   if(!missing(m))
-    args <- concat(args, m=m)
+    args <- concat(args, list(m=m))
   if(!missing(c))
     args <- concat(args, c=c)
   if(!missing(r))
