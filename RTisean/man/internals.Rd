@@ -12,7 +12,6 @@
 \alias{print.TISEANblock}
 \alias{print.TISEANoutput}
 \alias{setTISEANdocs}
-\alias{setTISEANpath}
 \alias{TISEANblock}
 \alias{TISEANoutput}
 \title{Internal objects}

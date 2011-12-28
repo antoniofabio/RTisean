@@ -20,16 +20,26 @@
     binlist <- .binlist
   count <- sum(binlist %in% dir(path))
   if(count==0)
-    stop("no TISEAN executables found in that directory. Please set a proper TISEAN executables path using 'setTISEANpath'")	
+    stop("no TISEAN executables found in that directory. Please set a proper TISEAN executables path using 'setTISEANpath'")
   return()
 }
 
 setTISEANpath <- function(path, GUI=interactive()) {
   if(interactive() && missing(path)) {
-    if(GUI && require(tcltk))
-      path <- tclvalue(tkchooseDirectory(title="Please select TISEAN executables directory"))
-    else
+    prompt1 <- "the '.RTiseanSettings' file will be written in your home folder.\nare you fine with it?"
+    if(GUI && require(tcltk)) {
+      areweok <- tclvalue(tkmessageBox(default = "yes", icon = "question", message = prompt1, type = "yesno"))
+      if(areweok != "yes") {
+        stop("cannot set the TISEAN path")
+      }
+      path <- tclvalue(tkchooseDirectory(title="select TISEAN executables directory"))
+    } else {
+      areweok <- readline(sprintf("%s (y/n)", prompt1))
+      if(areweok != "y") {
+        stop("cannot set the TISEAN path")
+      }
       path <- readline("TISEAN executables directory: ")
+    }
     .checkPath(path)
   }
   settingsPath <- file.path(Sys.getenv("HOME"), ".RTiseanSettings")
