@@ -1,3 +1,5 @@
+3.0-15
+
 3.0-14  29 dec 2011
 	- comply with CRAN policies: ask before writing in the user's HOME folder
 	- comply with latest package startup messages guidelines

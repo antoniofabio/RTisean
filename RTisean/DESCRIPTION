@@ -1,6 +1,6 @@
 Package: RTisean
 Date: 29/12/2011
-Version: 3.0.14
+Version: 3.0.15
 Title:  R interface to Tisean algorithms
 Author: TISEAN authors: Rainer Hegger, Holger Kantz, Thomas Schreiber. R interface code by Antonio, Fabio Di Narzo, R documentation and examples by Gianluca Gazzola
 Maintainer: Antonio Fabio Di Narzo <antonio.fabio@gmail.com>
