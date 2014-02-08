@@ -3,14 +3,14 @@
   settingsFile <- ".RTiseanSettings"
   usrdir <- Sys.getenv("HOME")
   settingsPath <- file.path(usrdir, settingsFile)
-  if(settingsFile %in% dir(usrdir, all=TRUE)) { #file found
+  if(settingsFile %in% dir(usrdir, all.files=TRUE)) { #file found
     path <- gsub("(.*) *$","\\1",readLines(settingsPath)[1])
     .checkPath(path)
-    assign(".TISEANpath",path,env=.GlobalEnv)
+    assign(".TISEANpath",path,envir=.GlobalEnv)
     return()
   }
   path <- setTISEANpath()
-  assign(".TISEANpath",path,env=.GlobalEnv)
+  assign(".TISEANpath",path,envir=.GlobalEnv)
 }
 
 .checkPath <- function(path) {
@@ -27,7 +27,7 @@
 setTISEANpath <- function(path, GUI=interactive()) {
   if(interactive() && missing(path)) {
     prompt1 <- "the '.RTiseanSettings' file will be written in your home folder.\nare you fine with it?"
-    if(GUI && require(tcltk)) {
+    if(GUI) {
       areweok <- tclvalue(tkmessageBox(default = "yes", icon = "question", message = prompt1, type = "yesno"))
       if(areweok != "yes") {
         stop("cannot set the TISEAN path")
@@ -48,16 +48,16 @@ setTISEANpath <- function(path, GUI=interactive()) {
 }
 
 setTISEANdocs <- function(path, GUI=interactive()) {
-  if(missing(path) && GUI && require(tcltk))
+  if(missing(path) && GUI)
     path <- as.character(tkchooseDirectory(title="Please select TISEAN executables directory"))
-  assign(".TISEANdocs",path,env=.GlobalEnv)
+  assign(".TISEANdocs",path,envir=.GlobalEnv)
 }
 
 helpTISEAN <- function(routine) {
   if(!exists(".TISEANdocs")) {
-    if(interactive() && require(tcltk))
+    if(interactive())
       assign(".TISEANdocs", as.character(tkchooseDirectory(
-                                                           title="Please select TISEAN html docs directory")),env=.GlobalEnv)
+                                                           title="Please select TISEAN html docs directory")),envir=.GlobalEnv)
     else stop("you first have to set path to TISEAN docs using 'setTISEANdocs(path)'")
   }
   rfile <- paste(routine,"html",sep=".")

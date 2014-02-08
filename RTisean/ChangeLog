@@ -1,4 +1,5 @@
 3.0-15  08 feb 2014
+	- fix partial arguments matchings
 	- fix storage of '.binlist' vector during package loading
 	(spotted by Samet Gunay)
 
